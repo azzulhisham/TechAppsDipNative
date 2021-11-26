@@ -3,10 +3,6 @@
 
 using namespace std;
 
-const int COLSIZE = 5;
-const int ROWSIZE = 4;
-
-
 
 vector<vector<int>> ExtendArray(vector<vector<int>> raw, int col, int row) {
 
@@ -23,8 +19,8 @@ vector<vector<int>> ExtendArray(vector<vector<int>> raw, int col, int row) {
 //    }
 
 
-    for (int i = 0; i < ROWSIZE; ++i) {
-        for (int j = 0; j < COLSIZE; ++j) {
+    for (int i = 0; i < raw.size(); ++i) {
+        for (int j = 0; j < raw[0].size(); ++j) {
             raw[i][j] *= 2;
         }
     }
@@ -63,11 +59,12 @@ int main() {
 	                               { 9, 10, 11, 12, 90 },
 	                               { 13, 14, 15, 16, 130 }};
 
-	PaddingArray(c_array, COLSIZE, ROWSIZE, 1, 1, false);
+	PaddingArray(c_array, c_array[0].size(), c_array.size(), 1, 1, false);
 
     cout << c_array.size() << "*" << c_array[0].size() << endl;
 	cout << "App end..........." << endl;
 	return 0;
 }
+
 
 
