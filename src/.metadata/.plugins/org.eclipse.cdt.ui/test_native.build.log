@@ -1,0 +1,7 @@
+15:47:06 **** Clean-only build of configuration Debug for project test_native ****
+make clean 
+rm -rf  ./src/test_native.o  ./src/test_native.d  test_native.dll
+ 
+
+15:47:07 Build Finished. 0 errors, 0 warnings. (took 951ms)
+

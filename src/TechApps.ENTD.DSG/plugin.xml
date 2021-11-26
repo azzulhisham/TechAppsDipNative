@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.ui.handlers">
+      <handler
+            class="com.petronas.entd.dsg.MenuHandler"
+            commandId="com.petronas.entd.menu">            
+            <activeWhen>
+            	<with variable="activeViewId">
+              		<reference definitionId="com.lgc.dsaf.ui.inventory.impl.view.cnf">
+              		</reference>
+              	</with>
+            </activeWhen>
+      </handler>
+      <handler
+            class="com.petronas.entd.dsg.MenuHandler"
+            commandId="com.petronas.entd.popup">
+	        <activeWhen>
+	           <with variable="activeMenuSelection">
+	              <iterate
+	                    ifEmpty="false"
+	                     operator="or">
+	                  <adapt type="com.lgc.dsaf.data.app.DspDataObject">
+	                  </adapt>
+	               </iterate>
+	            </with>
+	         </activeWhen>
+      </handler>
+   </extension>
+</plugin>

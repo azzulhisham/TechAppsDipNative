@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<plugin>
+
+   <extension point="org.eclipse.ui.menus">
+	  <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="Petronas"
+               mnemonic="P"
+               id="com.petronas.dsg.menus.mainMenu">
+            <command
+                commandId="com.petronas.dip.menu"
+                  label="DIP"
+                  icon="icons/icon16.png"
+                  style="push">      
+           </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+               allPopups="false"
+               locationURI="popup:org.eclipse.ui.popup.any">
+           <command
+                 commandId="com.petronas.dip.popup"
+                 icon="icons/icon16.png"
+                 label="DIP"
+                 style="push">
+            <visibleWhen checkEnabled="true"></visibleWhen>
+           </command>
+      </menuContribution>       
+   </extension>
+   
+   <extension point="org.eclipse.ui.commands">
+      <command
+            id="com.petronas.dip.menu"
+            name="DIP">
+      </command> 
+      <command
+            name="DIP"
+            id="com.petronas.dip.popup">
+      </command>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.petronas.dip.MenuHandler"
+            commandId="com.petronas.dip.menu">
+      </handler>
+      <handler
+            class="com.petronas.dip.MenuHandler"
+            commandId="com.petronas.dip.popup">
+            <activeWhen>
+	           <with variable="activeMenuSelection">
+	              <iterate
+	                    ifEmpty="false"
+	                     operator="or">
+	                  <adapt type="java.lang.String">
+	                  </adapt>
+	               </iterate>
+	            </with>
+	         </activeWhen>
+      </handler>
+   </extension>
+   
+</plugin>
+
+

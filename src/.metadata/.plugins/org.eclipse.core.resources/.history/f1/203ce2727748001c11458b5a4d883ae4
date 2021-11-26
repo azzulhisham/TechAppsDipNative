@@ -1,0 +1,23 @@
+//============================================================================
+// Name        : test_native.cpp
+// Author      : Zulhisham
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Testing Java Native
+//============================================================================
+
+
+#include "com_petronas_dsg_TestNative.h"
+
+
+jdouble JNICALL Java_com_petronas_dsg_TestNative_multiple
+  (JNIEnv *env, jclass cls, jdouble param1, jdouble param2) {
+
+	return param1 * param2;
+}
+
+jdouble JNICALL Java_com_petronas_dsg_TestNative_sum
+  (JNIEnv *env, jclass cls, jdouble param1, jdouble param2) {
+
+	return param1 + param2;
+}

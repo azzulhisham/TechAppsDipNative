@@ -1,0 +1,9 @@
+10:08:10 **** Incremental Build of configuration Debug for project TechApps.Dip.Native ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\tempCodeRunnerFile.o" "..\\jni\\tempCodeRunnerFile.cpp" 
+..\jni\tempCodeRunnerFile.cpp:1:1: error: 'COLSIZE' does not name a type
+    1 | COLSIZE
+      | ^~~~~~~
+
+10:08:11 Build Failed. 1 errors, 0 warnings. (took 701ms)
+

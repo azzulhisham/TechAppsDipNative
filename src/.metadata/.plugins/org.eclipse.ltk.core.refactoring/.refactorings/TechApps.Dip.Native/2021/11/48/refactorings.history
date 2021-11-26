@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;DipSlopePWDjni/src/DipSlopePWD&apos; to &apos;DipSlopePWD.cpp&apos;" description="Rename resource &apos;DipSlopePWD&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/DipSlopePWD" name="DipSlopePWD.cpp" stamp="1637805061845" updateReferences="true"/>
+</session>

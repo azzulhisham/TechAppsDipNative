@@ -1,0 +1,7 @@
+09:51:39 **** Rebuild of configuration Debug for project DipSlopePWDjni ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\DipSlopePWD.o" "..\\src\\DipSlopePWD.cpp" 
+g++ -o DipSlopePWDjni.exe "src\\DipSlopePWD.o" 
+
+09:51:43 Build Finished. 0 errors, 0 warnings. (took 4s.487ms)
+

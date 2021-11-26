@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension point="org.eclipse.ui.menus">
+	  <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="Petronas"
+               mnemonic="P"
+               id="com.petronas.dsg.menus.mainMenu">
+            <command
+                commandId="com.petronas.entd.menu"
+                  label="ENTD"
+                  icon="icons/icon16.png"
+                  style="push">      
+           </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+               allPopups="false"
+               locationURI="popup:org.eclipse.ui.popup.any">
+           <command
+                 commandId="com.petronas.entd.popup"
+                 icon="icons/icon16.png"
+                 label="ENTD"
+                 style="push">
+            <visibleWhen checkEnabled="true"></visibleWhen>
+           </command>
+      </menuContribution>       
+   </extension>
+   
+   <extension point="org.eclipse.ui.commands">
+      <command
+            id="com.petronas.entd.menu"
+            name="ENTD">
+      </command> 
+      <command
+            name="ENTD"
+            id="com.petronas.entd.popup">
+      </command>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.petronas.entd.MenuHandler"
+            commandId="com.petronas.entd.menu">
+      </handler>
+      <handler
+            class="com.petronas.entd.MenuHandler"
+            commandId="com.petronas.entd.popup">
+            <activeWhen>
+	           <with variable="activeMenuSelection">
+	              <iterate
+	                    ifEmpty="false"
+	                     operator="or">
+	                  <adapt type="java.lang.String">
+	                  </adapt>
+	               </iterate>
+	            </with>
+	         </activeWhen>
+      </handler>
+   </extension>
+   
+</plugin>

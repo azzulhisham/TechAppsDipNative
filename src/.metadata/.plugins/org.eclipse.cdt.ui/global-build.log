@@ -1,0 +1,20 @@
+08:36:59 **** Incremental Build of configuration Debug for project TechApps.Dip.Native ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\DipSlopePWD.o" "..\\jni\\DipSlopePWD.cpp" 
+g++ -shared -o libTechApps.Dip.Native.exe "jni\\DipSlopePWD.o" 
+Info: Nothing to build for TechApps.Dip.Native
+08:37:48 **** Clean-only build of configuration Debug for project TechApps.Dip.Native ****
+rm -rf jni/tempCodeRunnerFile.o jni/DipSlopePWD.d jni/DipSlopePWD.o libTechApps.Dip.Native.exe jni/tempCodeRunnerFile.d 
+08:38:05 **** Rebuild of configuration Debug for project TechApps.Dip.Native ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\DipSlopePWD.o" "..\\jni\\DipSlopePWD.cpp" 
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\tempCodeRunnerFile.o" "..\\jni\\tempCodeRunnerFile.cpp" 
+..\jni\tempCodeRunnerFile.cpp:1:1: error: 'COLSIZE' does not name a type
+    1 | COLSIZE
+      | ^~~~~~~
+10:08:10 **** Incremental Build of configuration Debug for project TechApps.Dip.Native ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\tempCodeRunnerFile.o" "..\\jni\\tempCodeRunnerFile.cpp" 
+..\jni\tempCodeRunnerFile.cpp:1:1: error: 'COLSIZE' does not name a type
+    1 | COLSIZE
+      | ^~~~~~~

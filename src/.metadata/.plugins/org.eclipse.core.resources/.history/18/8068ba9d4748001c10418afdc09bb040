@@ -1,0 +1,12 @@
+package com.petronas.dsg;
+
+public class TestNative {
+
+	static {
+		System.loadLibrary("test_native");
+	}
+	
+	public static native double multiple(double a, double b);
+	public static native double sum(double a, double b);
+	
+}

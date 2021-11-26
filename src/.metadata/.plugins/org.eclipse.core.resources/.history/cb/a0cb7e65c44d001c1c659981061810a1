@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+const int SIZE = 4;
+
+
+
+int main() {
+	//PaddingArray(1,1,1,1,true);
+
+	cout << "App end..........." << endl;
+	return 0;
+}

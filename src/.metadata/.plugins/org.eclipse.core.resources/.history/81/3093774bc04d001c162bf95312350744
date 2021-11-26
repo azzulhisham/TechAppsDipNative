@@ -1,0 +1,61 @@
+#include "dip.h"
+using namespace std;
+
+
+//int main() {
+//	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+//
+//	double param1 = 1.1;
+//	float param2 = 2.2;
+//	string myname;
+//
+//	cout << param1 / param2 << endl;
+//
+//	cout << "enter your name : ";
+//	cin >> myname;
+//	cout << "You entered your name as : " + myname << endl;
+//
+//	return 0;
+//}
+
+const int SIZE = 4;
+
+void PaddingArray(int input[][SIZE], int colSize, int rowSize, int winX, int winZ,  bool circ = false) {
+
+	int c_array[SIZE][SIZE] = {{ 1, 2, 3, 4 },
+	                               { 5, 6, 7, 8 },
+	                               { 9, 10, 11, 12 },
+	                               { 13, 14, 15, 16 }};
+
+    int xMmid = (int)floor(winX / 2.0);
+    int yMmid = (int)floor(winZ / 2.0);
+
+    colSize += xMmid;
+    rowSize += yMmid;
+
+    int *extended = ExtendArray(c_array, colSize, rowSize);
+
+}
+
+int *ExtendArray(int raw[][SIZE], int col, int row) {
+
+	//vector<vector<MKL_Complex8>> expanded = new Complex32[col, row];
+//    for (int i = 0; i < col; i++)
+//    {
+//        for (int j = 0; j < row; j++)
+//        {
+//            if (i >= raw.GetLength(0) || j >= raw.GetLength(1))
+//                continue;
+//
+//            expanded[i, j] = raw[i, j];
+//        }
+//    }
+
+    for (int i = 0; i < SIZE; ++i) {
+        for (int j = 0; j < SIZE; ++j) {
+            raw[i][j] *= 2;
+        }
+    }
+    return reinterpret_cast<int *>(raw);
+
+}
