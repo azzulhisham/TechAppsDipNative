@@ -4,33 +4,24 @@
 using namespace std;
 
 
-vector<vector<int>> ExtendArray(vector<vector<int>> raw, int col, int row) {
+int main() {
 
-	//vector<vector<MKL_Complex8>> expanded = new Complex32[col, row];
-//    for (int i = 0; i < col; i++)
-//    {
-//        for (int j = 0; j < row; j++)
-//        {
-//            if (i >= raw.GetLength(0) || j >= raw.GetLength(1))
-//                continue;
-//
-//            expanded[i, j] = raw[i, j];
-//        }
-//    }
+    DIP dip;
 
+	// vector<vector<int>> c_array = {{ 1, 2, 3, 4, 10 },
+	//                                { 5, 6, 7, 8, 50 },
+	//                                { 9, 10, 11, 12, 90 },
+	//                                { 13, 14, 15, 16, 130 }};
 
-    for (int i = 0; i < raw.size(); ++i) {
-        for (int j = 0; j < raw[0].size(); ++j) {
-            raw[i][j] *= 2;
-        }
-    }
+    // int colSize = (int)(c_array[0].size());
+    // int rowSize = (int)(c_array.size());                               
 
-    //return reinterpret_cast<int *>(raw);
-    return raw;
+	// dip.PaddingArray(c_array, colSize, rowSize, 1, 1, false);
+
+	return 0;
 }
 
-
-void PaddingArray(vector<vector<int>> input, int colSize, int rowSize, int winX, int winZ,  bool circ = false) {
+vector<vector<int>> DIP::PaddingArray(vector<vector<int>> input, int colSize, int rowSize, int winX, int winZ,  bool circ) {
 
     int xMmid = (int)floor(winX / 2.0);
     int yMmid = (int)floor(winZ / 2.0);
@@ -40,31 +31,69 @@ void PaddingArray(vector<vector<int>> input, int colSize, int rowSize, int winX,
 
     vector<vector<int>> extended = ExtendArray(input, colSize, rowSize);
 
-    cout << "modified array\n";
-    for (int i = 0; i < extended.size(); ++i) {
-        cout << " [ ";
-        for (int j = 0; j < extended[0].size(); ++j) {
-            //cout << setw(2) << *(extended + (i * COLSIZE) + j) << ", ";
-            cout << setw(2) << extended[i][j] << ", ";
+    if (!circ) {
+        return extended;
+    }
+
+    int mcMx = xMmid;
+    int mcMy = yMmid;
+    
+    int meMx = mcMx + colSize - 1;
+    int meMy = mcMy + rowSize - 1;
+
+    vector<vector<int>> newKernal = ExIndex(extended, mcMx, meMx - 1, mcMy, meMy - 1);
+
+    return newKernal;
+    
+}
+
+vector<vector<int>> DIP::ExtendArray(vector<vector<int>> raw, int col, int row) {
+
+    vector<vector<int>> expanded(row);
+    for(auto i=0; i<row; i++){
+        expanded[i] = vector<int>(col);
+    }
+
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < col; j++)
+        {
+            if (i >= raw.size() || j >= raw[0].size())
+                continue;
+
+            expanded[i][j] = raw[i][j];
         }
-        cout << "]" << endl;
-    }  
+    }
+
+    return expanded;
+
+}
+
+vector<vector<int>> DIP::ExIndex(vector<vector<int>> m, int mcXFrom, int mcXTo, int mcYFrom, int mcYTo){
+
+    vector<vector<int>> newMatrix(m.size());
+    for(auto i=0; i<m.size(); i++){
+        newMatrix[i] = vector<int>(m[0].size());
+    }    
+
+    for (int i = 0, x=mcYFrom; i < m.size(); x++, i++)  //row
+    {
+        for (int j = 0, y = mcXFrom; j < m[0].size(); y++, j++)  //col
+        {
+            if (x == m.size())
+                x = 0;
+
+            if (y == m[0].size())
+                y = 0;
+
+            newMatrix[i][j] = m[i][j];
+        }
+    }
+
+    return newMatrix;
 }
 
 
-int main() {
-
-	vector<vector<int>> c_array = {{ 1, 2, 3, 4, 10 },
-	                               { 5, 6, 7, 8, 50 },
-	                               { 9, 10, 11, 12, 90 },
-	                               { 13, 14, 15, 16, 130 }};
-
-	PaddingArray(c_array, c_array[0].size(), c_array.size(), 1, 1, false);
-
-    cout << c_array.size() << "*" << c_array[0].size() << endl;
-	cout << "App end..........." << endl;
-	return 0;
-}
 
 
 
