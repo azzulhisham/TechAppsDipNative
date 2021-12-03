@@ -1,26 +1,13 @@
 #include "dip.h"
+#include "index3d.h"
+
 #include <iomanip>
 
 using namespace std;
 
-class Index3d {
-    public:
-        int I;
-        int J;
-        int K;
-
-        Index3d(int i, int j, int k){
-            I = i;
-            J = j;
-            K = k;
-        }  
-
-        Index3d(int v){
-            I = v;
-            J = v;
-            K = v;
-        }          
-};
+void Index3D::Test(Index3D input) {
+    cout << input.I << ", " << input.J << ", " << input.K << endl;
+}
 
 int main() {
 
@@ -45,14 +32,19 @@ int main() {
     cout << in[1][2][2] << endl; 
     cout << endl;
 
-    Index3d aa(in[1][1][2], in[1][2][2], in[1][2][3]); 
-    Index3d bb(in[0][0][3]);
+    Index3D aa;
+    Index3D bb;
+
+    aa.InitializeIJK(in[1][1][2], in[1][2][2], in[1][2][3]); 
+    bb.InitializeV(in[0][0][3]);
     //aa.I = in[1][2][2];
     //aa.J = in[1][2][3];  
     //aa.K = 0;
 
     cout << aa.I << ", " << aa.J << ", " << aa.K << endl;
     cout << bb.I << ", " << bb.J << ", " << bb.K << endl;
+
+    bb.Test(aa);
 
     //unit testing
     // vector<vector<MKL_Complex8>> c_array(inputMatrix.size(), vector<MKL_Complex8>(inputMatrix[0].size()));
@@ -311,69 +303,85 @@ float DIP::rotgauss(int x, int y, double theta, double sigmax, double sigmay) {
 
 vector<vector<MKL_Complex8>> DIP::CustGaussian2D(int winX, int winZ, double theta) {
 
-            int x = GetSizeKernel(winX);
-            int y = GetSizeKernel(winZ);
+    int x = GetSizeKernel(winX);
+    int y = GetSizeKernel(winZ);
 
-            vector<vector<float>> p(y, vector<float>(x));
+    vector<vector<float>> p(y, vector<float>(x));
 
-            float sumofgauss = 0.0f;
-            int rbegin = -1 * (int)round(x / 2.0);
-            int cbegin = -1 * (int)round(y / 2.0);
+    float sumofgauss = 0.0f;
+    int rbegin = -1 * (int)round(x / 2.0);
+    int cbegin = -1 * (int)round(y / 2.0);
 
-            for (int r = 0; r < x; r++)
-            {
-                for (int c = 0; c < y; c++)
-                {
-                    p[c][r] = rotgauss(rbegin + (r + 1), cbegin + (c + 1), theta, winX, winZ);
-                    sumofgauss += p[c][r];
-                }
-            }
+    for (int r = 0; r < x; r++)
+    {
+        for (int c = 0; c < y; c++)
+        {
+            p[c][r] = rotgauss(rbegin + (r + 1), cbegin + (c + 1), theta, winX, winZ);
+            sumofgauss += p[c][r];
+        }
+    }
 
-            vector<vector<MKL_Complex8>> kernel(p.size(), vector<MKL_Complex8>(p[0].size()));
-            
-            for (int i = 0; i < p.size(); i++)
-            {
-                for (int j = 0; j < p[0].size(); j++)
-                {
-                    kernel[i][j].real = p[i][j] / sumofgauss;
-                }
-            }
+    vector<vector<MKL_Complex8>> kernel(p.size(), vector<MKL_Complex8>(p[0].size()));
+    
+    for (int i = 0; i < p.size(); i++)
+    {
+        for (int j = 0; j < p[0].size(); j++)
+        {
+            kernel[i][j].real = p[i][j] / sumofgauss;
+        }
+    }
 
-            return kernel;
+    return kernel;
 
 }
 
 vector<vector<float>> DIP::CustGaussianDouble2D(int winX, int winZ, double theta) {
 
-            int x = GetSizeKernel(winX);
-            int y = GetSizeKernel(winZ);
+    int x = GetSizeKernel(winX);
+    int y = GetSizeKernel(winZ);
 
-            vector<vector<float>> p(y, vector<float>(x));
+    vector<vector<float>> p(y, vector<float>(x));
 
-            float sumofgauss = 0.0f;
-            int rbegin = -1 * (int)round(x / 2.0);
-            int cbegin = -1 * (int)round(y / 2.0);
+    float sumofgauss = 0.0f;
+    int rbegin = -1 * (int)round(x / 2.0);
+    int cbegin = -1 * (int)round(y / 2.0);
 
-            for (int r = 0; r < x; r++)
-            {
-                for (int c = 0; c < y; c++)
-                {
-                    p[c][r] = rotgauss(rbegin + (r + 1), cbegin + (c + 1), theta, winX, winZ);
-                    sumofgauss += p[c][r];
-                }
-            }
+    for (int r = 0; r < x; r++)
+    {
+        for (int c = 0; c < y; c++)
+        {
+            p[c][r] = rotgauss(rbegin + (r + 1), cbegin + (c + 1), theta, winX, winZ);
+            sumofgauss += p[c][r];
+        }
+    }
 
-            vector<vector<float>> kernel(p.size(), vector<float>(p[0].size()));
-            
-            for (int i = 0; i < p.size(); i++)
-            {
-                for (int j = 0; j < p[0].size(); j++)
-                {
-                    kernel[i][j] = p[i][j] / sumofgauss;
-                }
-            }
+    vector<vector<float>> kernel(p.size(), vector<float>(p[0].size()));
+    
+    for (int i = 0; i < p.size(); i++)
+    {
+        for (int j = 0; j < p[0].size(); j++)
+        {
+            kernel[i][j] = p[i][j] / sumofgauss;
+        }
+    }
 
-            return kernel;
+    return kernel;
+
+}
+
+void Index3D::InitializeIJK(int i, int j, int k){
+    
+    I = i;
+    J = j;
+    K = k;
+
+}
+
+void Index3D::InitializeV(int v){
+    
+    I = v;
+    J = v;
+    K = v;
 
 }
 

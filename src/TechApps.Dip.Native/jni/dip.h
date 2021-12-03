@@ -7,7 +7,7 @@
 #include <limits>
 #include <iostream>
 #include <sstream>
-#include<cmath>
+#include <cmath>
 
 using std::vector;
 
@@ -30,4 +30,5 @@ public:
     vector<vector<MKL_Complex8>> GenerateKernel(vector<vector<MKL_Complex8>> raw, int width, int height);
     vector<vector<MKL_Complex8>> CustGaussian2D(int winX, int winZ, double theta);
     vector<vector<float>> CustGaussianDouble2D(int winX, int winZ, double theta);
+
 };
