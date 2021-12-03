@@ -3,6 +3,24 @@
 
 using namespace std;
 
+class Index3d {
+    public:
+        int I;
+        int J;
+        int K;
+
+        Index3d(int i, int j, int k){
+            I = i;
+            J = j;
+            K = k;
+        }  
+
+        Index3d(int v){
+            I = v;
+            J = v;
+            K = v;
+        }          
+};
 
 int main() {
 
@@ -16,40 +34,62 @@ int main() {
                                    { -52, 53, 54, -55, 56, -56, 58, 59, 60, -61, 22 },
             };
 
-    vector<vector<MKL_Complex8>> c_array(inputMatrix.size(), vector<MKL_Complex8>(inputMatrix[0].size()));
-    for (int i = 0; i < c_array.size(); i++) {
-        for (int j = 0; j < c_array[0].size(); j++) {
-            c_array[i][j].real = (float)inputMatrix[i][j];
-        }
-    }
+    vector<vector<vector<int>>> in = { 
+                                        { { 1, 2, 3, -1 }, { 4, 5, 6, -2 }, { 4, 5, 6, -2 } },
+                                        { { 7, 8, 9, -3 }, { 10, 11, 12, -4 }, { 4, 5, 6, -2 } } 
+                                     };
+
+    cout << in.size() << endl; 
+    cout << in[0].size() << endl; 
+    cout << in[0][0].size() << endl; 
+    cout << in[1][2][2] << endl; 
+    cout << endl;
+
+    Index3d aa(in[1][1][2], in[1][2][2], in[1][2][3]); 
+    Index3d bb(in[0][0][3]);
+    //aa.I = in[1][2][2];
+    //aa.J = in[1][2][3];  
+    //aa.K = 0;
+
+    cout << aa.I << ", " << aa.J << ", " << aa.K << endl;
+    cout << bb.I << ", " << bb.J << ", " << bb.K << endl;
+
+    //unit testing
+    // vector<vector<MKL_Complex8>> c_array(inputMatrix.size(), vector<MKL_Complex8>(inputMatrix[0].size()));
+    // for (int i = 0; i < c_array.size(); i++) {
+    //     for (int j = 0; j < c_array[0].size(); j++) {
+    //         c_array[i][j].real = (float)inputMatrix[i][j];
+    //     }
+    // }
                              
-    vector<vector<MKL_Complex8>> kernel = dip.CustGaussian2D(dip.windowX, dip.windowZ, 0);
-    vector<vector<MKL_Complex8>> kernelWin = dip.GenerateKernel(kernel, (int)(inputMatrix.size()), (int)(inputMatrix[0].size()));
+    // vector<vector<MKL_Complex8>> kernel = dip.CustGaussian2D(dip.windowX, dip.windowZ, 0);
+    // vector<vector<MKL_Complex8>> kernelWin = dip.GenerateKernel(kernel, (int)(inputMatrix.size()), (int)(inputMatrix[0].size()));
 
-    vector<MKL_Complex8> kernelWinArray(kernelWin.size() * kernelWin[0].size());
-    int temp = 0;
+    // vector<MKL_Complex8> kernelWinArray(kernelWin.size() * kernelWin[0].size());
+    // int temp = 0;
 
-    for(int r=0; r<kernelWin.size(); r++){
-        for(int c=0; c<kernelWin[0].size(); c++){
-            kernelWinArray[temp] = kernelWin[r][c];
-            temp += 1;
-        }
-    }
+    // for(int r=0; r<kernelWin.size(); r++){
+    //     for(int c=0; c<kernelWin[0].size(); c++){
+    //         kernelWinArray[temp] = kernelWin[r][c];
+    //         temp += 1;
+    //     }
+    // }
 
-    cout << "Kernel win : row=" << c_array.size() << " x col=" << c_array[0].size() << endl;
+    // cout << "Kernel win : row=" << c_array.size() << " x col=" << c_array[0].size() << endl;
 
 
-    vector<vector<MKL_Complex8>> result = dip.Convolution(kernelWinArray, c_array); 
+    //vector<vector<MKL_Complex8>> result = dip.Convolution(kernelWinArray, c_array); 
 	//vector<vector<MKL_Complex8>> result = dip.PaddingArray(c_array, 11, 6, 4, 4, false);
 
-    for (int r = 0; r < result.size(); r++)
-    {
-        for (int c = 0; c < result[0].size(); c++)
-        {
-            cout << result[r][c].real << "\t";
-        }
-        cout << endl;
-    }    
+    // cout.precision(11);
+    // for (int r = 0; r < result.size(); r++)
+    // {
+    //     for (int c = 0; c < result[0].size(); c++)
+    //     {
+    //         cout << result[r][c].real << "\t";
+    //     }
+    //     cout << endl;
+    // }    
 
 
 	return 0;
