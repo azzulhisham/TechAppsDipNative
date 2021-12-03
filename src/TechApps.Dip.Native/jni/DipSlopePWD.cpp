@@ -1,12 +1,12 @@
 #include "dip.h"
-#include "index3d.h"
+
 
 #include <iomanip>
 
 using namespace std;
 
-void Index3D::Test(Index3D input) {
-    cout << input.I << ", " << input.J << ", " << input.K << endl;
+void DIP::TestPrint(Index3D index3d) {
+    cout << index3d.I << ", " << index3d.J << ", " << index3d.K << endl;
 }
 
 int main() {
@@ -32,11 +32,9 @@ int main() {
     cout << in[1][2][2] << endl; 
     cout << endl;
 
-    Index3D aa;
-    Index3D bb;
+    Index3D aa(in[1][1][2], in[1][2][2], in[1][2][3]);
+    Index3D bb(in[0][0][3]);
 
-    aa.InitializeIJK(in[1][1][2], in[1][2][2], in[1][2][3]); 
-    bb.InitializeV(in[0][0][3]);
     //aa.I = in[1][2][2];
     //aa.J = in[1][2][3];  
     //aa.K = 0;
@@ -44,7 +42,8 @@ int main() {
     cout << aa.I << ", " << aa.J << ", " << aa.K << endl;
     cout << bb.I << ", " << bb.J << ", " << bb.K << endl;
 
-    bb.Test(aa);
+    aa.Test();
+    dip.TestPrint(bb);
 
     //unit testing
     // vector<vector<MKL_Complex8>> c_array(inputMatrix.size(), vector<MKL_Complex8>(inputMatrix[0].size()));
@@ -369,20 +368,5 @@ vector<vector<float>> DIP::CustGaussianDouble2D(int winX, int winZ, double theta
 
 }
 
-void Index3D::InitializeIJK(int i, int j, int k){
-    
-    I = i;
-    J = j;
-    K = k;
-
-}
-
-void Index3D::InitializeV(int v){
-    
-    I = v;
-    J = v;
-    K = v;
-
-}
 
 

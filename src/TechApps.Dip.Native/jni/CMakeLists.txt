@@ -4,7 +4,7 @@ project(DIP
 	VERSION 1.0
 	DESCRIPTION "DIP")
 
-add_executable(${PROJECT_NAME} DipSlopePWD.cpp)
+add_executable(${PROJECT_NAME} DipSlopePWD.cpp Index3D.cpp)
 
 # PUBLIC needed to make library available elsewhere in project
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR})

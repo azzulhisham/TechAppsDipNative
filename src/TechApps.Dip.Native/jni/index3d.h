@@ -6,9 +6,9 @@ class Index3D
         int K;
 
         //constructor
-        void InitializeIJK(int i, int j, int k); 
-        void InitializeV(int v);   
+        Index3D(int i, int j, int k); 
+        Index3D(int v);   
 
         //method
-        void Test(Index3D input);    
+        void Test();    
 };

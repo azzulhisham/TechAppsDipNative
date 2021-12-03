@@ -9,6 +9,8 @@
 #include <sstream>
 #include <cmath>
 
+#include "Index3D.h"
+
 using std::vector;
 
 class DIP
@@ -31,4 +33,5 @@ public:
     vector<vector<MKL_Complex8>> CustGaussian2D(int winX, int winZ, double theta);
     vector<vector<float>> CustGaussianDouble2D(int winX, int winZ, double theta);
 
+    void TestPrint(Index3D index3d);
 };
