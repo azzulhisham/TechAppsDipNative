@@ -17,13 +17,25 @@ int main() {
     //atan() function for complex number
     cout << "The atan() of " << c1.real() << " is "<< atan(c1) << endl << endl;
 
-    complex<float> c2 = atan(c1);
+    // complex<float> c2 = atan(c1);
 
-    MKL_Complex8 value;
-    value.real = c2.real();
-    value.imag = c2.imag();
-    cout << "The atan(c2) is (" << value.real << ", " << value.imag << ")" << endl << endl;
+    // MKL_Complex8 value;
+    // value.real = c2.real();
+    // value.imag = c2.imag();
+    // cout << "The atan(c2) is (" << value.real << ", " << value.imag << ")" << endl << endl;
 
+    MKL_Complex8 value1;
+    value1.real = 6;
+    value1.imag = 9;
+
+    MKL_Complex8 value2;
+    value2.real = 3;
+    value2.imag = -4;
+
+    MKL_Complex8 result = dip.ComplexDivision(value1, value2);
+    result.real *= -1;
+    result.imag *= -1;
+    cout << "The division result is (" << result.real << ", " << result.imag << ")" << endl << endl;
 
 	vector<vector<int>> inputMatrix = {{ -1, 2, 3, -4, 5, -6, 7, 8, 9, -10, 11 },
                                    { -12, 13, 14, -15, 16, -16, 18, 19, 20, -21, 22 },
@@ -182,7 +194,6 @@ vector<vector<float>> DIP::getDxInline(vector<vector<vector<float>>> data, int w
 
 }
 
-
 vector<vector<float>> DIP::Calculate(vector<vector<vector<float>>> data, Index3D min, Index3D max, int cursor, const vector<MKL_Complex8>& kernelWindow) {
 
     int height = (max.K - min.K) + 1;
@@ -235,7 +246,9 @@ vector<vector<float>> DIP::Calculate(vector<vector<vector<float>>> data, Index3D
 
             //TODO
             //pp[i][j] = Complex32.Divide(resultDtDx[i][j], resultDtDt[i][j]) * -1;
-
+            pp[i][j] = ComplexDivision(resultDtDx[i][j], resultDtDt[i][j]);
+            pp[i][j].real *= -1;
+            pp[i][j].imag *= -1;
         }
     }
 
@@ -549,6 +562,26 @@ vector<vector<float>> DIP::CustGaussianDouble2D(int winX, int winZ, double theta
     }
 
     return kernel;
+
+}
+
+MKL_Complex8 DIP::ComplexDivision(MKL_Complex8 dividend, MKL_Complex8 divisor) {
+
+    float conjugate = pow(divisor.real, 2) + pow(divisor.imag, 2);
+
+    MKL_Complex8 multiply1; 
+    multiply1.real = divisor.real * dividend.real;
+    multiply1.imag = divisor.real * dividend.imag;
+
+    MKL_Complex8 multiply2; 
+    multiply2.real = (divisor.imag * -1) * dividend.imag * -1;
+    multiply2.imag = (divisor.imag * -1) * dividend.real;
+
+    MKL_Complex8 result; 
+    result.real = (multiply1.real + multiply2.real) / conjugate;
+    result.imag = (multiply1.imag + multiply2.imag) / conjugate; 
+
+    return result;   
 
 }
 

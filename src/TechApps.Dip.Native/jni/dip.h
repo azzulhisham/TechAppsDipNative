@@ -43,5 +43,6 @@ public:
     vector<vector<float>> getDtCrossline(vector<vector<vector<float>>> data, int w1, int h1, int cursor);
     vector<vector<float>> getDxCrossline(vector<vector<vector<float>>> data, int w1, int h1, int cursor);
 
+    MKL_Complex8 ComplexDivision(MKL_Complex8 dividend, MKL_Complex8 divisor);
     float getMagnitude(const MKL_Complex8& trace);
 };
