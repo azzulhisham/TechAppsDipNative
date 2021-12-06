@@ -86,6 +86,174 @@ int main() {
 	return 0;
 }
 
+vector<vector<float>> DIP::getDxCrossline(vector<vector<vector<float>>> data, int w1, int h1, int cursor) {
+
+    int width = w1;
+    int height = h1;
+
+    vector<vector<float>> dt(height, vector<float>(width)); //column major (follow matlab)
+
+    for (int z = 0; z < height; z++)
+    {
+        for (int x = 1,w=0; x < width; x++, w++)
+        {
+            float tempDiff = data[x][cursor][z] - data[x - 1][cursor][z];
+            dt[z][w] = tempDiff;
+        }
+        //var diffTrace = DiffOrder1(trace);
+    }
+
+    return dt;
+
+}
+
+vector<vector<float>> DIP::getDtCrossline(vector<vector<vector<float>>> data, int w1, int h1, int cursor) {
+
+    int width = w1;
+    int height = h1;
+
+    vector<vector<float>> dt(height, vector<float>(width)); //column major (follow matlab)
+
+    for (int x = 0; x < width; x++)
+    {
+        for (int z = 1, y = 0; z < height; z++, y++)
+        {
+            float tempDiff = data[x][cursor][z] - data[x][cursor][z - 1];
+            dt[y][x] = tempDiff;
+        }
+                //var diffTrace = DiffOrder1(trace);
+    }
+
+    return dt;
+
+}
+
+vector<vector<float>> DIP::getDtInline(vector<vector<vector<float>>> data, int w1, int h1, int cursor){
+
+    int width = w1;
+    int height = h1;
+
+    vector<vector<float>> dt(height, vector<float>(width));
+    
+    for (int x = 0; x < width; x++)
+    {
+        for (int z = 1, y = 0; z < height; z++, y++)
+        {
+            float tempDiff = data[cursor][x][z] - data[cursor][x][z-1];
+            dt[y][x] = tempDiff; //column major (follow matlab)
+        }
+    }
+
+    return dt;
+
+}
+
+vector<vector<float>> DIP::getDxInline(vector<vector<vector<float>>> data, int w1, int h1, int cursor) {
+
+    int width = w1;
+    int height = h1;
+
+    vector<vector<float>> dt(height, vector<float>(width));//column major (follow matlab)
+
+    for (int z = 0; z < height; z++)
+    {
+        for (int x = 1, w=0; x < width; x++, w++)
+        {
+            float tempDiff = data[cursor][x][z] - data[cursor][x - 1][z];
+            dt[z][w] = tempDiff;
+        }
+        //var diffTrace = DiffOrder1(trace);
+    }
+
+    return dt;
+
+}
+
+
+vector<vector<float>> DIP::Calculate(vector<vector<vector<float>>> data, Index3D min, Index3D max, int cursor, const vector<MKL_Complex8>& kernelWindow) {
+
+    int height = (max.K - min.K) + 1;
+    int widthInLine = (max.J - min.J) + 1;
+    int widthXLine = (max.I - min.I) + 1;
+
+    vector<vector<float>> dt = DIP::isInline ? DIP::getDtInline(data, widthInLine, height, cursor) : DIP::getDtCrossline(data, widthXLine, height, cursor); //Min.X and Max.X is Width of the Slice
+
+    int widthXline = (max.I - min.I) + 1;
+    int heightXline = (max.K - min.K) + 1;
+
+    int widthInline = (max.J - min.J) + 1;
+    int heightInline = (max.K - min.K) + 1;
+
+    vector<vector<float>> dx = DIP::isInline ? DIP::getDxInline(data, widthInline, heightInline, cursor) : DIP::getDxCrossline(data, widthXline, heightXline, cursor); //Min.X and Max.X is Width of the Slice
+
+    vector<vector<MKL_Complex8>> dtdt(dt.size(), vector<MKL_Complex8>(dt[0].size()));
+    vector<vector<MKL_Complex8>> dtdx(dt.size(), vector<MKL_Complex8>(dt[0].size()));
+
+    for (int i = 0; i < dt.size(); i++)
+    {
+        for (int j = 0; j < dt[0].size(); j++)
+        {
+            //TO CHECK
+            dtdx[i][j].real = dt[i][j] * dx[i][j];
+            dtdt[i][j].real = dt[i][j] * dt[i][j];
+        }
+    }
+
+    //convolution
+    vector<vector<MKL_Complex8>> resultDtDx = Convolution(kernelWindow, dtdx);
+    vector<vector<MKL_Complex8>> resultDtDt = Convolution(kernelWindow, dtdt);
+
+    vector<vector<MKL_Complex8>> pp(resultDtDx.size(), vector<MKL_Complex8>(resultDtDx[0].size()));
+
+    for (int i = 0; i < resultDtDx.size(); i++)
+    {
+        for (int j = 0; j < resultDtDx[0].size(); j++)
+        {
+
+            //just added
+            if (abs(resultDtDt[i][j].real) <= 1e-6)
+            {
+                MKL_Complex8 tmp;
+                tmp.real = 0;
+                tmp.imag = 0;
+                pp[i][j] = tmp;
+                
+                continue;
+            }
+
+            //TODO
+            //pp[i][j] = Complex32.Divide(resultDtDx[i][j], resultDtDt[i][j]) * -1;
+
+        }
+    }
+
+    vector<vector<MKL_Complex8>> resultPp = Convolution(kernelWindow, pp);
+
+    vector<vector<float>> newSlice(resultPp.size(), vector<float>(resultPp[0].size()));
+    vector<vector<float>> phases(resultPp.size(), vector<float>(resultPp[0].size()));
+
+    for (int i = 0; i < resultPp.size(); i++)
+    {
+        for (int j = 0; j < resultPp[0].size(); j++)
+        {
+            //TO CHECK
+            MKL_Complex8 value;
+            value.real = (resultPp[i][j].real * DIP::dZ) / DIP::dX;
+            //MKL_Complex8 b = atan(value);
+
+            //if(b.real < 0)
+                //newSlice[i][j] = (float)(b.Magnitude * -1 * 180 / M_PI);
+            //else
+                //newSlice[i][j] = (float)(b.Magnitude * 180 / M_PI);
+
+            
+        }
+    }
+
+    return newSlice;    
+
+}
+
 vector<vector<MKL_Complex8>> DIP::Convolution(const vector<MKL_Complex8>& kernelWin, vector<vector<MKL_Complex8>> input) {
 
     DIP dip;

@@ -21,6 +21,7 @@ public:
     int dX = 1;
     int dZ = 1;
     float pSize = 0.0001f;
+    bool isInline = true;
 
     vector<vector<MKL_Complex8>> PaddingArray(vector<vector<MKL_Complex8>> input, int rowSize, int colSize, int winX, int winZ,  bool circ);
     vector<vector<MKL_Complex8>> ExtendArray(vector<vector<MKL_Complex8>> raw, int row, int col);  
@@ -34,4 +35,10 @@ public:
     vector<vector<float>> CustGaussianDouble2D(int winX, int winZ, double theta);
 
     void TestPrint(Index3D index3d);
+    vector<vector<float>> Calculate(vector<vector<vector<float>>> data, Index3D min, Index3D max, int cursor, const vector<MKL_Complex8>& kernelWindow);
+
+    vector<vector<float>> getDtInline(vector<vector<vector<float>>> data, int w1, int h1, int cursor);
+    vector<vector<float>> getDxInline(vector<vector<vector<float>>> data, int w1, int h1, int cursor);
+    vector<vector<float>> getDtCrossline(vector<vector<vector<float>>> data, int w1, int h1, int cursor);
+    vector<vector<float>> getDxCrossline(vector<vector<vector<float>>> data, int w1, int h1, int cursor);
 };
