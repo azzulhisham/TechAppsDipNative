@@ -8,6 +8,7 @@
 #include <iostream>
 #include <sstream>
 #include <cmath>
+#include<complex>
 
 #include "Index3D.h"
 
@@ -41,4 +42,6 @@ public:
     vector<vector<float>> getDxInline(vector<vector<vector<float>>> data, int w1, int h1, int cursor);
     vector<vector<float>> getDtCrossline(vector<vector<vector<float>>> data, int w1, int h1, int cursor);
     vector<vector<float>> getDxCrossline(vector<vector<vector<float>>> data, int w1, int h1, int cursor);
+
+    float getMagnitude(const MKL_Complex8& trace);
 };

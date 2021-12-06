@@ -13,6 +13,18 @@ int main() {
 
     DIP dip;
 
+    complex<float> c1(5, 2);
+    //atan() function for complex number
+    cout << "The atan() of " << c1.real() << " is "<< atan(c1) << endl << endl;
+
+    complex<float> c2 = atan(c1);
+
+    MKL_Complex8 value;
+    value.real = c2.real();
+    value.imag = c2.imag();
+    cout << "The atan(c2) is (" << value.real << ", " << value.imag << ")" << endl << endl;
+
+
 	vector<vector<int>> inputMatrix = {{ -1, 2, 3, -4, 5, -6, 7, 8, 9, -10, 11 },
                                    { -12, 13, 14, -15, 16, -16, 18, 19, 20, -21, 22 },
                                    { -22, 23, 24, -25, 26, -26, 28, 29, 30, -31, 32 },
@@ -26,6 +38,7 @@ int main() {
                                         { { 7, 8, 9, -3 }, { 10, 11, 12, -4 }, { 4, 5, 6, -2 } } 
                                      };
 
+    cout << "vector size:" << endl;
     cout << in.size() << endl; 
     cout << in[0].size() << endl; 
     cout << in[0][0].size() << endl; 
@@ -193,7 +206,6 @@ vector<vector<float>> DIP::Calculate(vector<vector<vector<float>>> data, Index3D
     {
         for (int j = 0; j < dt[0].size(); j++)
         {
-            //TO CHECK
             dtdx[i][j].real = dt[i][j] * dx[i][j];
             dtdt[i][j].real = dt[i][j] * dt[i][j];
         }
@@ -217,7 +229,7 @@ vector<vector<float>> DIP::Calculate(vector<vector<vector<float>>> data, Index3D
                 tmp.real = 0;
                 tmp.imag = 0;
                 pp[i][j] = tmp;
-                
+
                 continue;
             }
 
@@ -236,16 +248,20 @@ vector<vector<float>> DIP::Calculate(vector<vector<vector<float>>> data, Index3D
     {
         for (int j = 0; j < resultPp[0].size(); j++)
         {
-            //TO CHECK
             MKL_Complex8 value;
             value.real = (resultPp[i][j].real * DIP::dZ) / DIP::dX;
-            //MKL_Complex8 b = atan(value);
 
-            //if(b.real < 0)
-                //newSlice[i][j] = (float)(b.Magnitude * -1 * 180 / M_PI);
-            //else
-                //newSlice[i][j] = (float)(b.Magnitude * 180 / M_PI);
+            complex<float> tmp(value.real, value.imag);
+            complex<float> tmpResult =  atan(tmp);
 
+            MKL_Complex8 b;
+            b.real = tmpResult.real();
+            b.imag = tmpResult.imag();
+
+            if(b.real < 0)
+                newSlice[i][j] = (float)(getMagnitude(b) * -1 * 180 / M_PI);
+            else
+                newSlice[i][j] = (float)(getMagnitude(b) * 180 / M_PI);
             
         }
     }
@@ -533,6 +549,17 @@ vector<vector<float>> DIP::CustGaussianDouble2D(int winX, int winZ, double theta
     }
 
     return kernel;
+
+}
+
+float DIP::getMagnitude(const MKL_Complex8& trace) {
+
+	double real = trace.real;
+	double imag = trace.imag;
+	if (std::isinf(real) || std::isinf(imag) || std::isnan(real) || std::isnan(imag))
+		return 0;
+	double v = sqrt((real * real) + (imag * imag));
+	return (float)(std::isinf(v) || std::isnan(v) ? 0 : v);
 
 }
 
