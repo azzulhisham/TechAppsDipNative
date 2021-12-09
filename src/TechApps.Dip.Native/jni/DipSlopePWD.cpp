@@ -5,111 +5,65 @@
 
 using namespace std;
 
-void DIP::TestPrint(Index3D index3d) {
-    cout << index3d.I << ", " << index3d.J << ", " << index3d.K << endl;
-}
 
-int main() {
+// int main() {
 
-    DIP dip;
+//     DIP dip;
 
-    complex<float> c1(5, 2);
-    //atan() function for complex number
-    cout << "The atan() of " << c1.real() << " is "<< atan(c1) << endl << endl;
 
-    // complex<float> c2 = atan(c1);
+// 	vector<vector<int>> inputMatrix = {{ -1, 2, 3, -4, 5, -6, 7, 8, 9, -10, 11 },
+//                                    { -12, 13, 14, -15, 16, -16, 18, 19, 20, -21, 22 },
+//                                    { -22, 23, 24, -25, 26, -26, 28, 29, 30, -31, 32 },
+//                                    { -32, 33, 34, -35, 36, -36, 38, 39, 40, -41, 42 },
+//                                    { -32, 33, 34, -35, 36, -36, 38, 39, 40, -41, 42 },
+//                                    { -52, 53, 54, -55, 56, -56, 58, 59, 60, -61, 22 },
+//             };
 
-    // MKL_Complex8 value;
-    // value.real = c2.real();
-    // value.imag = c2.imag();
-    // cout << "The atan(c2) is (" << value.real << ", " << value.imag << ")" << endl << endl;
+//     vector<vector<vector<int>>> in = { 
+//                                         { { 1, 2, 3, -1 }, { 4, 5, 6, -2 }, { 4, 5, 6, -2 } },
+//                                         { { 7, 8, 9, -3 }, { 10, 11, 12, -4 }, { 4, 5, 6, -2 } } 
+//                                      };
 
-    MKL_Complex8 value1;
-    value1.real = 6;
-    value1.imag = 9;
 
-    MKL_Complex8 value2;
-    value2.real = 3;
-    value2.imag = -4;
-
-    MKL_Complex8 result = dip.ComplexDivision(value1, value2);
-    result.real *= -1;
-    result.imag *= -1;
-    cout << "The division result is (" << result.real << ", " << result.imag << ")" << endl << endl;
-
-	vector<vector<int>> inputMatrix = {{ -1, 2, 3, -4, 5, -6, 7, 8, 9, -10, 11 },
-                                   { -12, 13, 14, -15, 16, -16, 18, 19, 20, -21, 22 },
-                                   { -22, 23, 24, -25, 26, -26, 28, 29, 30, -31, 32 },
-                                   { -32, 33, 34, -35, 36, -36, 38, 39, 40, -41, 42 },
-                                   { -32, 33, 34, -35, 36, -36, 38, 39, 40, -41, 42 },
-                                   { -52, 53, 54, -55, 56, -56, 58, 59, 60, -61, 22 },
-            };
-
-    vector<vector<vector<int>>> in = { 
-                                        { { 1, 2, 3, -1 }, { 4, 5, 6, -2 }, { 4, 5, 6, -2 } },
-                                        { { 7, 8, 9, -3 }, { 10, 11, 12, -4 }, { 4, 5, 6, -2 } } 
-                                     };
-
-    cout << "vector size:" << endl;
-    cout << in.size() << endl; 
-    cout << in[0].size() << endl; 
-    cout << in[0][0].size() << endl; 
-    cout << in[1][2][2] << endl; 
-    cout << endl;
-
-    Index3D aa(in[1][1][2], in[1][2][2], in[1][2][3]);
-    Index3D bb(in[0][0][3]);
-
-    //aa.I = in[1][2][2];
-    //aa.J = in[1][2][3];  
-    //aa.K = 0;
-
-    cout << aa.I << ", " << aa.J << ", " << aa.K << endl;
-    cout << bb.I << ", " << bb.J << ", " << bb.K << endl;
-
-    aa.Test();
-    dip.TestPrint(bb);
-
-    //unit testing
-    // vector<vector<MKL_Complex8>> c_array(inputMatrix.size(), vector<MKL_Complex8>(inputMatrix[0].size()));
-    // for (int i = 0; i < c_array.size(); i++) {
-    //     for (int j = 0; j < c_array[0].size(); j++) {
-    //         c_array[i][j].real = (float)inputMatrix[i][j];
-    //     }
-    // }
+//     //unit testing
+//     vector<vector<MKL_Complex8>> c_array(inputMatrix.size(), vector<MKL_Complex8>(inputMatrix[0].size()));
+//     for (int i = 0; i < c_array.size(); i++) {
+//         for (int j = 0; j < c_array[0].size(); j++) {
+//             c_array[i][j].real = (float)inputMatrix[i][j];
+//         }
+//     }
                              
-    // vector<vector<MKL_Complex8>> kernel = dip.CustGaussian2D(dip.windowX, dip.windowZ, 0);
-    // vector<vector<MKL_Complex8>> kernelWin = dip.GenerateKernel(kernel, (int)(inputMatrix.size()), (int)(inputMatrix[0].size()));
+//     vector<vector<MKL_Complex8>> kernel = dip.CustGaussian2D(dip.windowX, dip.windowZ, 0);
+//     vector<vector<MKL_Complex8>> kernelWin = dip.GenerateKernel(kernel, (int)(inputMatrix.size()), (int)(inputMatrix[0].size()));
 
-    // vector<MKL_Complex8> kernelWinArray(kernelWin.size() * kernelWin[0].size());
-    // int temp = 0;
+//     vector<MKL_Complex8> kernelWinArray(kernelWin.size() * kernelWin[0].size());
+//     int temp = 0;
 
-    // for(int r=0; r<kernelWin.size(); r++){
-    //     for(int c=0; c<kernelWin[0].size(); c++){
-    //         kernelWinArray[temp] = kernelWin[r][c];
-    //         temp += 1;
-    //     }
-    // }
-
-    // cout << "Kernel win : row=" << c_array.size() << " x col=" << c_array[0].size() << endl;
+//     for(int r=0; r<kernelWin.size(); r++){
+//         for(int c=0; c<kernelWin[0].size(); c++){
+//             kernelWinArray[temp] = kernelWin[r][c];
+//             temp += 1;
+//         }
+//     }
 
 
-    //vector<vector<MKL_Complex8>> result = dip.Convolution(kernelWinArray, c_array); 
-	//vector<vector<MKL_Complex8>> result = dip.PaddingArray(c_array, 11, 6, 4, 4, false);
+//     vector<vector<MKL_Complex8>> result = dip.Convolution(kernelWinArray, c_array); 
+// 	//vector<vector<MKL_Complex8>> result = dip.PaddingArray(c_array, 11, 6, 4, 4, false);
 
-    // cout.precision(11);
-    // for (int r = 0; r < result.size(); r++)
-    // {
-    //     for (int c = 0; c < result[0].size(); c++)
-    //     {
-    //         cout << result[r][c].real << "\t";
-    //     }
-    //     cout << endl;
-    // }    
+//     cout.precision(11);
+//     for (int r = 0; r < result.size(); r++)
+//     {
+//         for (int c = 0; c < result[0].size(); c++)
+//         {
+//             cout << result[r][c].real << "\t";
+//         }
+//         cout << endl;
+//     }    
 
 
-	return 0;
-}
+// 	return 0;
+// }
+
 
 vector<vector<float>> DIP::getDxCrossline(vector<vector<vector<float>>> data, int w1, int h1, int cursor) {
 
@@ -272,9 +226,9 @@ vector<vector<float>> DIP::Calculate(vector<vector<vector<float>>> data, Index3D
             b.imag = tmpResult.imag();
 
             if(b.real < 0)
-                newSlice[i][j] = (float)(getMagnitude(b) * -1 * 180 / M_PI);
+                newSlice[i][j] = (float)(getMagnitude(b) * -1 * 180 / PI);
             else
-                newSlice[i][j] = (float)(getMagnitude(b) * 180 / M_PI);
+                newSlice[i][j] = (float)(getMagnitude(b) * 180 / PI);
             
         }
     }
@@ -383,7 +337,7 @@ vector<vector<MKL_Complex8>> DIP::PaddingArray(vector<vector<MKL_Complex8>> inpu
     int meMx = mcMx + colSize - 1;
     int meMy = mcMy + rowSize - 1;
 
-    vector<vector<MKL_Complex8>> newKernal = ExIndex(extended, mcMx, meMx - 1, mcMy, meMy - 1);
+    vector<vector<MKL_Complex8>> newKernal = ExIndex(extended, mcMx, meMx - 1, mcMy, meMy - 1); 
 
     return newKernal;
     
@@ -489,7 +443,7 @@ int DIP::GetSizeKernel(int size) {
 
 float DIP::rotgauss(int x, int y, double theta, double sigmax, double sigmay) {
 
-    theta = (theta / 180) * M_PI;
+    theta = (theta / 180) * PI;
     double xm = (x) * cos(theta) - (y) * sin(theta);
     double ym = (x) * sin(theta) + (y) * cos(theta);
     double u = pow((xm / sigmax), 2) + pow((ym / sigmay), 2);
@@ -567,7 +521,7 @@ vector<vector<float>> DIP::CustGaussianDouble2D(int winX, int winZ, double theta
 
 MKL_Complex8 DIP::ComplexDivision(MKL_Complex8 dividend, MKL_Complex8 divisor) {
 
-    float conjugate = pow(divisor.real, 2) + pow(divisor.imag, 2);
+    double conjugate = pow(divisor.real, 2) + pow(divisor.imag, 2);
 
     MKL_Complex8 multiply1; 
     multiply1.real = divisor.real * dividend.real;
@@ -578,8 +532,8 @@ MKL_Complex8 DIP::ComplexDivision(MKL_Complex8 dividend, MKL_Complex8 divisor) {
     multiply2.imag = (divisor.imag * -1) * dividend.real;
 
     MKL_Complex8 result; 
-    result.real = (multiply1.real + multiply2.real) / conjugate;
-    result.imag = (multiply1.imag + multiply2.imag) / conjugate; 
+    result.real = (float)((multiply1.real + multiply2.real) / conjugate);
+    result.imag = (float)((multiply1.imag + multiply2.imag) / conjugate); 
 
     return result;   
 

@@ -1,7 +1,9 @@
 package com.petronas.dip;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.concurrent.CompletionService;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorCompletionService;
@@ -15,7 +17,8 @@ import org.eclipse.core.runtime.SubMonitor;
 import com.petronas.dsg.ISeismicData;
 import com.petronas.dsg.SeismicRange;
 
-public class Entd {
+
+public class Dip {
 
 	public int unit = 3;
 	public double rotation = 0;
@@ -30,10 +33,19 @@ public class Entd {
 	public String outputFilename = null;
 	
 	private int sampleSize = 0;
+	public float sampleRate = 0.004f;
+	public float maxAmp = 1;
+	
 	private ISeismicData _seismic;
 	private int thread_pool;
+	
 
-	public Entd(ISeismicData seismic) {
+	public float[] run(float[] input, int sampleSize) {
+		return CallNative.run(input, sampleSize, windowsX, windowsZ, dX, dZ, psizeCut, 
+			sampleSize, maxAmp, sampleRate);
+	}	
+	
+	public Dip(ISeismicData seismic) {
 		_seismic = seismic;
 		int cores = Runtime.getRuntime().availableProcessors(); // 48, 24, 12
 		thread_pool = (cores / 2) - 1; // 6, 3, 1
@@ -112,72 +124,173 @@ public class Entd {
 		}
 	}
 
-	private static final boolean debug = false;
+	//private static final boolean debug = false;
 	private static final String formatName = "DIP_%s_%s_%s_%s_%s"; //<name>_<id>_ENTD_<unit>_All
 
-	public float[] run(IProgressMonitor monitor) {
+	public void run(IProgressMonitor monitor) {
 		// generate output name
 		String[] outfilename = new String[1];
 		for (int i = 0; i < outfilename.length; i++)
 			outfilename[i] = String.format(formatName, windowsX, windowsZ, dX, dZ, (i + 1));
 		
 		_seismic.setOutputName(outfilename);
-		
-		templates = segment(unit); // initialize template
+
+		//
 		sampleSize = _seismic.getNumberOfSample();
-		int numberOfCrossLine = _seismic.getNumberOfCrossLine();
-		int numberOfInLine = _seismic.getNumberOfInLine();
-		final int padding = unit + 1;
-		final int width = padding * 2 + 1;
-
-		final SeismicRange[] ranges = _seismic.subCubeByTrace(width);
-		SubMonitor sub = SubMonitor.convert(monitor, ranges.length / numberOfCrossLine);
-		float[] density = new float[8];
+		sampleRate = _seismic.getSampleRate();
 		
-if (debug) {
-		for (int k = 0; k < numberOfInLine; k++) {
-			try {
-				SeismicRange[][] result = calculate(ranges, k);
-				save(result, density, sub);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}			 
-			sub.split(1);
-		}
+		SeismicRange[] ranges = _seismic.sliceByInline();
+		GetMaxAmp(ranges);
 		
-} else {
-		ExecutorService executor = Executors.newFixedThreadPool(thread_pool);
-		CompletionService<SeismicRange[][]> service = new ExecutorCompletionService<SeismicRange[][]>(executor);
-		List<Future<SeismicRange[][]>> tasks = new ArrayList<Future<SeismicRange[][]>>();
-
-		for (int k = 0; k < numberOfInLine; k++) {
-			final int index = k;
-			tasks.add(service.submit(() -> {				
-				return calculate(ranges, index);
+		SubMonitor sub = SubMonitor.convert(monitor, ranges.length);
+		ExecutorService executor = Executors.newFixedThreadPool(thread_pool);		
+		CompletionService<SeismicRange> service = new ExecutorCompletionService<SeismicRange>(executor);		
+		List<Future<SeismicRange>> futures = new ArrayList<Future<SeismicRange>>();
+		
+		for (SeismicRange range : ranges) {
+			futures.add(service.submit(new Callable<SeismicRange>() {
+				@Override
+				public SeismicRange call() {
+					//SeismicRange[] o = new SeismicRange[3];
+					float[] input = range.getData();						
+					float[] result = run(input, sampleSize);
+					//int n = result.length / o.length;
+					
+					//for (int i = 0; i < o.length; i++) {
+						//o[i] = new SeismicRange(Arrays.copyOfRange(result, i*n, (i+1)*n), range.traceSize);
+						//o[i].id = range.id;
+					//}
+					return new SeismicRange(result, _seismic.getNumberOfCrossLine(), range.id * _seismic.getNumberOfCrossLine());
+				}
 			}));
-		}
-
-		for (int j = 0; j < tasks.size(); j++) {
-			if (monitor.isCanceled())
-				break;
-			try {
-				SeismicRange[][] result = service.take().get();
-				save(result, density, sub);
-			} catch (InterruptedException | ExecutionException e) {
-				// _log.error("future error" + e.getMessage());
-				e.printStackTrace();
-			} catch (Exception e) {
-				// _log.error("future error" + e.getMessage());
-				e.printStackTrace();
+		}		
+		
+		try {
+			// wait for all task to finish
+			for (int j = 0; j < futures.size(); j++) {
+				if (monitor.isCanceled())
+					break;				
+				SeismicRange task = service.take().get();			
+				int inline = task.id / _seismic.getNumberOfCrossLine();
+				System.out.println("save inline: " + inline);
+				sub.setTaskName("save inline: " + inline);
+				
+				//for (int i = 0; i < task.length; i++) {
+					_seismic.save(task, 0); // save the result
+				//}				
+				sub.split(1);
 			}
-			sub.split(1);
+		} catch (InterruptedException | ExecutionException e) {
+//			_log.error("future error" + e.getMessage());
+			e.printStackTrace();
+		} catch (Exception e) {
+//			_log.error("future error" + e.getMessage());
+			// Thread.currentThread().interrupt();
+			e.printStackTrace();
 		}
-		executor.shutdown();
-}
+		executor.shutdown();		
+		
+//		templates = segment(unit); // initialize template
+//		sampleSize = _seismic.getNumberOfSample();
+//		int numberOfCrossLine = _seismic.getNumberOfCrossLine();
+//		int numberOfInLine = _seismic.getNumberOfInLine();
+//		final int padding = unit + 1;
+//		final int width = padding * 2 + 1;
+//
+//		final SeismicRange[] ranges = _seismic.subCubeByTrace(width);
+//		SubMonitor sub = SubMonitor.convert(monitor, ranges.length / numberOfCrossLine);
+//		float[] density = new float[8];
+		
+		
+		
+//if (debug) {
+//		for (int k = 0; k < numberOfInLine; k++) {
+//			try {
+//				SeismicRange[][] result = calculate(ranges, k);
+//				save(result, density, sub);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}			 
+//			sub.split(1);
+//		}
+//		
+//} else {
+//		ExecutorService executor = Executors.newFixedThreadPool(thread_pool);
+//		CompletionService<SeismicRange[][]> service = new ExecutorCompletionService<SeismicRange[][]>(executor);
+//		List<Future<SeismicRange[][]>> tasks = new ArrayList<Future<SeismicRange[][]>>();
+//
+//		for (int k = 0; k < numberOfInLine; k++) {
+//			final int index = k;
+//			tasks.add(service.submit(() -> {				
+//				return calculate(ranges, index);
+//			}));
+//		}
+//
+//		for (int j = 0; j < tasks.size(); j++) {
+//			if (monitor.isCanceled())
+//				break;
+//			try {
+//				SeismicRange[][] result = service.take().get();
+//				save(result, density, sub);
+//			} catch (InterruptedException | ExecutionException e) {
+//				// _log.error("future error" + e.getMessage());
+//				e.printStackTrace();
+//			} catch (Exception e) {
+//				// _log.error("future error" + e.getMessage());
+//				e.printStackTrace();
+//			}
+//			sub.split(1);
+//		}
+//		executor.shutdown();
+//}
 
-		return density;
+//		return density;
 	}
 
+	public void GetMaxAmp(SeismicRange[] ranges) {
+		
+		ExecutorService executor = Executors.newFixedThreadPool(thread_pool);
+//		SeismicRange[] ranges = _seismic.sliceByInline();	
+		List<Future<Float>> tasks = new ArrayList<Future<Float>>();
+		CompletionService<Float> service = new ExecutorCompletionService<Float>(executor);
+		for (SeismicRange range : ranges) {
+			tasks.add(service.submit(new Callable<Float>() {
+				@Override
+				public Float call() {
+					float max = Float.MIN_VALUE;
+					try {
+						float[] floatArray = range.getData();
+						for(float v : floatArray) {
+							if (max < v)
+								max = v;
+						}
+					} catch (Exception e) {
+						//_log.error("magnitude " + e.getMessage());
+					}
+					return max;
+				}
+			}));
+		}
+		
+		try {
+			for (int j = 0; j < tasks.size(); j++) {
+				Future<Float> task = service.take();
+				float result = task.get();
+				if (maxAmp < result)
+					maxAmp = result;
+			}
+		} catch (InterruptedException e) {
+			//_log.error("spectrum thread interrupted: " + e.getMessage());
+            Thread.currentThread().interrupt();
+	    } catch (ExecutionException e) {
+	    	//_log.error("spectrum thread exception: " + e.getMessage());
+	        Thread.currentThread().interrupt();
+	    } finally {
+	        if (executor != null)
+	        	executor.shutdownNow();
+	    }
+	}	
+	
 	private Row[][] templates;
 
 	private final double[][] _kernel = new double[][] { { 1.21306131942527, 1.60653065971263, 1.21306131942527 },

@@ -59,7 +59,7 @@ public class MainView extends TitleAreaDialog {
 	//private String _outputName = null;
 
 	private ISeismicData _seismic = null;
-	private Entd _attribute = null;
+	private Dip _attribute = null;
 	private Image _image = null;
 	private Image _arrow = null;
 	private float[] _density = new float[] { 20, 10, 15, 20, 30, 46, 29, 36 };
@@ -73,7 +73,7 @@ public class MainView extends TitleAreaDialog {
 		super(Display.getDefault().getActiveShell());
 		_seismic = data;
 	
-		_attribute = new Entd(_seismic);
+		_attribute = new Dip(_seismic);
 		_image = loadImage(_icon);
 		_arrow = loadImage(_arrowIcon);
 
@@ -110,7 +110,7 @@ public class MainView extends TitleAreaDialog {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				try {
-					_density = _attribute.run(monitor);
+					_attribute.run(monitor);
 					_seismic.save();
 					
 //					System.out.println("Start Click Run");
@@ -251,9 +251,8 @@ public class MainView extends TitleAreaDialog {
 	
 	
 	private static final String[] helpTexts = { "Window X", "Windows Z", "DX", "DZ", "PSize Cut"};
-	//private static final String itemTypes[] = { "PWDx", "PWDy"};
-
-	private static final String itemTypes[] = { "PWDx", "PWDy", String.format("%.5f", CallNative.sum(1.1, 2.2)), String.format("%.5f", CallNative.multiple(1.1, 2.2)), CallNative.comboItem(), CallNative.comboCustomItem("This custom item is passed from Java...")};
+	private static final String itemTypes[] = { "PWDx", "PWDy"};
+	//private static final String itemTypes[] = { "PWDx", "PWDy", String.format("%.5f", CallNative.sum(1.1, 2.2)), String.format("%.5f", CallNative.multiple(1.1, 2.2)), CallNative.comboItem(), CallNative.comboCustomItem("This custom item is passed from Java...")};
 
 	private void createParameter(final Composite parent) {	
 

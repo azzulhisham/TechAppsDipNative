@@ -4,11 +4,14 @@ project(DIP
 	VERSION 1.0
 	DESCRIPTION "DIP")
 
-add_executable(${PROJECT_NAME} DipSlopePWD.cpp Index3D.cpp)
+add_library(${PROJECT_NAME} SHARED DipSlopePWD.cpp Index3D.cpp JavaNative.cpp)
 
 # PUBLIC needed to make library available elsewhere in project
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR})
 
+find_package(JNI REQUIRED)
+
+include_directories(SYSTEM ${JNI_INCLUDE_DIRS})
 
 if (WIN32)
 	find_package(MKL CONFIG)	
