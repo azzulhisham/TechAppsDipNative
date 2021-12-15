@@ -8,7 +8,7 @@
 #include <iostream>
 #include <sstream>
 #include <cmath>
-#include<complex>
+#include <complex>
 
 #include "Index3D.h"
 
@@ -45,5 +45,6 @@ private:
     vector<vector<float>> getDxCrossline(vector<vector<vector<float>>> data, int w1, int h1, int cursor);
 
     MKL_Complex8 ComplexDivision(MKL_Complex8 dividend, MKL_Complex8 divisor);
+
     float getMagnitude(const MKL_Complex8& trace);
 };

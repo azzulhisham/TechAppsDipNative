@@ -5,6 +5,7 @@ project(DIP
 	DESCRIPTION "DIP")
 
 add_library(${PROJECT_NAME} SHARED DipSlopePWD.cpp Index3D.cpp JavaNative.cpp)
+#add_executable(${PROJECT_NAME} DipSlopePWD.cpp Index3D.cpp JavaNative.cpp)
 
 # PUBLIC needed to make library available elsewhere in project
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR})

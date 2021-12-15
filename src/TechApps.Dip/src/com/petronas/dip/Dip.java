@@ -1,5 +1,8 @@
 package com.petronas.dip;
 
+import java.io.FileWriter;   // Import the FileWriter class
+import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -141,6 +144,30 @@ public class Dip {
 		
 		SeismicRange[] ranges = _seismic.sliceByInline();
 		GetMaxAmp(ranges);
+		
+		//write raw data to file
+//		for (int i=0; i<1; i++) {
+//			float[] input = ranges[i].getData();
+//			float[] result = run(input, sampleSize);
+//			
+//			try {
+//				FileWriter out = new FileWriter("C:\\Users\\zulhisham\\Downloads\\result007.txt");
+//
+//				for(int q=0; q<result.length; q++) {
+//					String str = String.valueOf(result[q]) + "\r\n";
+//					out.append(str);
+//				}
+//				
+//				out.close();
+//				
+//			} catch(IOException e) {
+//				System.out.println("An error occurred.");
+//			}
+//			
+//			
+//			System.out.println("end.....");
+//		}
+		
 		
 		SubMonitor sub = SubMonitor.convert(monitor, ranges.length);
 		ExecutorService executor = Executors.newFixedThreadPool(thread_pool);		

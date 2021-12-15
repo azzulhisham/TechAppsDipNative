@@ -1,7 +1,8 @@
 #include "dip.h"
-
-
 #include <iomanip>
+
+#include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -19,10 +20,10 @@ using namespace std;
 //                                    { -52, 53, 54, -55, 56, -56, 58, 59, 60, -61, 22 },
 //             };
 
-//     vector<vector<vector<int>>> in = { 
-//                                         { { 1, 2, 3, -1 }, { 4, 5, 6, -2 }, { 4, 5, 6, -2 } },
-//                                         { { 7, 8, 9, -3 }, { 10, 11, 12, -4 }, { 4, 5, 6, -2 } } 
-//                                      };
+//     // vector<vector<vector<int>>> in = { 
+//     //                                     { { 1, 2, 3, -1 }, { 4, 5, 6, -2 }, { 4, 5, 6, -2 } },
+//     //                                     { { 7, 8, 9, -3 }, { 10, 11, 12, -4 }, { 4, 5, 6, -2 } } 
+//     //                                  };
 
 
 //     //unit testing
@@ -65,6 +66,89 @@ using namespace std;
 // }
 
 
+// int main(){
+//     cout << "Test Calculate Function..............." << endl;
+
+//     int sampleSize = 28;
+//     vector<float> input(784);
+//     int cnt = 0;
+
+//     fstream newfile;  
+//     newfile.open("C:\\Users\\zulhisham\\Downloads\\output007.txt",ios::in); //open a file to perform read operation using file object
+//     if (newfile.is_open()){   //checking whether the file is open
+//         string tp;
+//         while(getline(newfile, tp)){ //read data from file object and put it into string.
+//             //cout << tp << "\n"; //print the data of the string
+
+//             input[cnt] = std::stof(tp);
+//             cnt++;
+//         }
+//         newfile.close(); //close the file object.
+//     }
+
+//     cout << "App Started..............." << endl;
+//     // for(int i=0; i<input.size(); i++){
+//     //     cout << input[i] << endl;
+//     // }
+
+//     //initialize 3D vector/list
+//     int dataLength = input.size();
+//     int traceSize = sampleSize;
+//     int numberOfTrace = dataLength/traceSize;
+//     vector<vector<vector<float>>> inputData(1, vector<vector<float>>(numberOfTrace, vector<float>(traceSize)));
+
+//     int dataRow = 0;
+//     int dataCnt = 0;
+
+//     //convert input data to 3D array
+//     for(int i=0; i<dataLength; i++) {
+//         inputData[0][dataRow][dataCnt] = input[i];
+//         dataCnt += 1;
+
+//         if(dataCnt >= traceSize) {
+//             dataRow += 1;
+//             dataCnt = 0;
+//         }
+//     }
+
+//     DIP dip;
+//     Index3D min(0);
+//     Index3D max((int)(inputData.size())-1, (int)(inputData[0].size())-1, (int)(inputData[0][0].size())-1);
+
+//     vector<vector<MKL_Complex8>> kernel = dip.CustGaussian2D(dip.windowX, dip.windowZ, 0);
+//     vector<vector<MKL_Complex8>> kernelWindow = dip.GenerateKernel(kernel, (int)(inputData[0].size()), (int)(inputData[0][0].size()));
+
+//     vector<MKL_Complex8>kernelWin(kernelWindow.size() * kernelWindow[0].size());
+
+//     //convert 2D array to single array
+//     dataCnt = 0;
+//     for(int i=0; i<kernelWindow.size(); i++) {
+//         for(int j=0; j<kernelWindow[0].size(); j++) {
+//             kernelWin[dataCnt] = kernelWindow[i][j];
+//             dataCnt += 1;
+//         }
+//     }  
+
+//     //process
+//     vector<vector<float>> result = dip.Calculate(inputData, min, max, 0, kernelWin);  
+//     vector<float>resultData(result.size() * result[0].size());
+
+//     //convert 2D array to single array
+//     dataCnt = 0;
+//     for(int i=0; i<result.size(); i++) {
+//         for(int j=0; j<result[0].size(); j++) {
+//             resultData[dataCnt] = result[i][j];
+//             dataCnt += 1;
+//         }
+//     }  
+
+//     for(int i=0; i<resultData.size(); i++){
+//         cout << resultData[i] << endl;
+//     }
+
+//     return 0;
+// }
+
 vector<vector<float>> DIP::getDxCrossline(vector<vector<vector<float>>> data, int w1, int h1, int cursor) {
 
     int width = w1;
@@ -83,7 +167,6 @@ vector<vector<float>> DIP::getDxCrossline(vector<vector<vector<float>>> data, in
     }
 
     return dt;
-
 }
 
 vector<vector<float>> DIP::getDtCrossline(vector<vector<vector<float>>> data, int w1, int h1, int cursor) {
@@ -104,7 +187,6 @@ vector<vector<float>> DIP::getDtCrossline(vector<vector<vector<float>>> data, in
     }
 
     return dt;
-
 }
 
 vector<vector<float>> DIP::getDtInline(vector<vector<vector<float>>> data, int w1, int h1, int cursor){
@@ -124,7 +206,6 @@ vector<vector<float>> DIP::getDtInline(vector<vector<vector<float>>> data, int w
     }
 
     return dt;
-
 }
 
 vector<vector<float>> DIP::getDxInline(vector<vector<vector<float>>> data, int w1, int h1, int cursor) {
@@ -145,7 +226,6 @@ vector<vector<float>> DIP::getDxInline(vector<vector<vector<float>>> data, int w
     }
 
     return dt;
-
 }
 
 vector<vector<float>> DIP::Calculate(vector<vector<vector<float>>> data, Index3D min, Index3D max, int cursor, const vector<MKL_Complex8>& kernelWindow) {
@@ -217,19 +297,47 @@ vector<vector<float>> DIP::Calculate(vector<vector<vector<float>>> data, Index3D
         {
             MKL_Complex8 value;
             value.real = (resultPp[i][j].real * DIP::dZ) / DIP::dX;
-
+            value.imag = (resultPp[i][j].imag * DIP::dZ) / DIP::dX;
             complex<float> tmp(value.real, value.imag);
-            complex<float> tmpResult =  atan(tmp);
+
+            
+            //------  the process below implemented the atan() of a comlex number  ------
+
+            //complex<float> tmp(-0.0681083f, -7.81696E-07f);   // for debug
+            complex<float> right(0.0 - tmp.imag(), tmp.real());
+            complex<float> tmp1(1 - right.real(), 0 - right.imag());
+            complex<float> tmp2(1 + right.real(), 0 + right.imag());
+
+            //log a complex number
+            //log(x + iy) = log(sqrt(pow(x, 2) + pow(y, 2))) + i atan(y/x)
+            complex<float> logTmp1(log(pow(pow(tmp1.real(),2) + pow(tmp1.imag(),2),0.5f)), atan(tmp1.imag()/tmp1.real()));
+            complex<float> logTmp2(log(pow(pow(tmp2.real(),2) + pow(tmp2.imag(),2),0.5f)), atan(tmp2.imag()/tmp2.real()));
+
+            complex<float> log1MinusLog2(logTmp1.real() - logTmp2.real(), logTmp1.imag() - logTmp2.imag());
+
+            complex<float> multiplier(0.0f, 0.5f);
+            
+            float atanReal = (multiplier.real() * log1MinusLog2.real()) - (multiplier.imag() * log1MinusLog2.imag());
+		    float atanImag = (multiplier.real() * log1MinusLog2.imag()) + (multiplier.imag() * log1MinusLog2.real());
+
+            complex<float> complexAtan(atanReal, atanImag);
+            //---------------------------------------------------------------------------
 
             MKL_Complex8 b;
-            b.real = tmpResult.real();
-            b.imag = tmpResult.imag();
+            b.real = complexAtan.real();
+            b.imag = complexAtan.imag();
+
+            float chk = (float)(getMagnitude(b));
 
             if(b.real < 0)
                 newSlice[i][j] = (float)(getMagnitude(b) * -1 * 180 / PI);
             else
                 newSlice[i][j] = (float)(getMagnitude(b) * 180 / PI);
-            
+
+            // if(b.real < 0)
+            //     newSlice[i][j] = (float)((b.real * -1) * -1 * 180 / PI);
+            // else
+            //     newSlice[i][j] = (float)((b.real * -1) * 180 / PI);            
         }
     }
 

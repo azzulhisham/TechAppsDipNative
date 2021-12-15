@@ -10,10 +10,16 @@ jfloatArray JNICALL Java_com_petronas_dip_CallNative_run
 
     DIP dip;
 
-    dip.windowX = winX;
-    dip.windowZ = winZ;
-    dip.dX = dx;
-    dip.dZ = dz;
+    //dip.windowX = winX;
+    //dip.windowZ = winZ;
+    dip.windowX = 2;
+    dip.windowZ = 2;
+
+    //dip.dX = dx;
+    //dip.dZ = dz;
+    dip.dX = 1;
+    dip.dZ = 1;
+
     dip.pSize = psizeCut;
 
     int dataLength = env->GetArrayLength(data);
@@ -24,20 +30,32 @@ jfloatArray JNICALL Java_com_petronas_dip_CallNative_run
 
     //convert jfloatArray to float
     vector<float> input(dataLength);
-	env->GetFloatArrayRegion(data, 0, dataLength, input.data());
+	  env->GetFloatArrayRegion(data, 0, dataLength, input.data());
 
     int dataRow = 0;
     int dataCnt = 0;
 
+    float _maxAmp = (float)maxAmp;
+    float _psizeCut = (float)psizeCut;
+    float pCutter = _maxAmp * _psizeCut;
+
     //convert input data to 3D array
     for(int i=0; i<dataLength; i++) {
-        inputData[0][dataRow][dataCnt] = input[i];
-        dataCnt += 1;
+      float absData = abs(input[i]);
 
-        if(dataCnt >= traceSize) {
-            dataRow += 1;
-            dataCnt = 0;
-        }
+      if (absData < pCutter){
+        inputData[0][dataRow][dataCnt] = 0;
+      }
+      else {
+        inputData[0][dataRow][dataCnt] = input[i];
+      }
+      
+      dataCnt += 1;
+
+      if(dataCnt >= traceSize) {
+          dataRow += 1;
+          dataCnt = 0;
+      }
     }
 
     Index3D min(0);
