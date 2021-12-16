@@ -74,7 +74,7 @@ using namespace std;
 //     int cnt = 0;
 
 //     fstream newfile;  
-//     newfile.open("C:\\Users\\zulhisham\\Downloads\\output007.txt",ios::in); //open a file to perform read operation using file object
+//     newfile.open("C:\\Users\\zulhisham\\Downloads\\inputData007.txt",ios::in); //open a file to perform read operation using file object
 //     if (newfile.is_open()){   //checking whether the file is open
 //         string tp;
 //         while(getline(newfile, tp)){ //read data from file object and put it into string.
@@ -92,7 +92,7 @@ using namespace std;
 //     // }
 
 //     //initialize 3D vector/list
-//     int dataLength = input.size();
+//     int dataLength = (int)(input.size());
 //     int traceSize = sampleSize;
 //     int numberOfTrace = dataLength/traceSize;
 //     vector<vector<vector<float>>> inputData(1, vector<vector<float>>(numberOfTrace, vector<float>(traceSize)));
@@ -310,14 +310,14 @@ vector<vector<float>> DIP::Calculate(vector<vector<vector<float>>> data, Index3D
             //------  the process below implemented the atan() of a comlex number  ------
 
             //complex<float> tmp(-0.0681083f, -7.81696E-07f);   // for debug
-            complex<float> right(0.0 - tmp.imag(), tmp.real());
+            complex<float> right(0.0f - tmp.imag(), tmp.real());
             complex<float> tmp1(1 - right.real(), 0 - right.imag());
             complex<float> tmp2(1 + right.real(), 0 + right.imag());
 
             //log a complex number
             //log(x + iy) = log(sqrt(pow(x, 2) + pow(y, 2))) + i atan(y/x)
-            complex<float> logTmp1(log(pow(pow(tmp1.real(),2) + pow(tmp1.imag(),2),0.5f)), atan(tmp1.imag()/tmp1.real()));
-            complex<float> logTmp2(log(pow(pow(tmp2.real(),2) + pow(tmp2.imag(),2),0.5f)), atan(tmp2.imag()/tmp2.real()));
+            complex<float> logTmp1(logf(powf(powf(tmp1.real(),2) + powf(tmp1.imag(),2),0.5f)), atan(tmp1.imag()/tmp1.real()));
+            complex<float> logTmp2(logf(powf(powf(tmp2.real(),2) + powf(tmp2.imag(),2),0.5f)), atan(tmp2.imag()/tmp2.real()));
 
             complex<float> log1MinusLog2(logTmp1.real() - logTmp2.real(), logTmp1.imag() - logTmp2.imag());
 
