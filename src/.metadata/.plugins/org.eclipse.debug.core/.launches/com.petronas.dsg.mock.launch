@@ -9,7 +9,7 @@
     <stringAttribute key="bootstrap" value=""/>
     <stringAttribute key="checked" value="[NONE]"/>
     <booleanAttribute key="clearConfig" value="true"/>
-    <booleanAttribute key="clearws" value="false"/>
+    <booleanAttribute key="clearws" value="true"/>
     <booleanAttribute key="clearwslog" value="false"/>
     <stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/com.petronas.dsg.mock"/>
     <booleanAttribute key="default" value="false"/>
@@ -702,7 +702,6 @@
         <setEntry value="com.petronas.dip@default:default"/>
         <setEntry value="com.petronas.dsg.mock@default:default"/>
         <setEntry value="com.petronas.dsg@default:default"/>
-        <setEntry value="com.petronas.entd@default:default"/>
         <setEntry value="native@default:default"/>
     </setAttribute>
     <booleanAttribute key="show_selected_only" value="false"/>

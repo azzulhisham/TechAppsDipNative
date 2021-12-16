@@ -62,7 +62,7 @@ jfloatArray JNICALL Java_com_petronas_dip_CallNative_run
     Index3D max((int)(inputData.size())-1, (int)(inputData[0].size())-1, (int)(inputData[0][0].size())-1);
 
     vector<vector<MKL_Complex8>> kernel = dip.CustGaussian2D(dip.windowX, dip.windowZ, 0);
-    vector<vector<MKL_Complex8>> kernelWindow = dip.GenerateKernel(kernel, (int)(inputData[0].size()), (int)(inputData[0][0].size()));
+    vector<vector<MKL_Complex8>> kernelWindow = dip.GenerateKernel(kernel, (int)(inputData[0][0].size()), (int)(inputData[0].size()));
 
     vector<MKL_Complex8>kernelWin(kernelWindow.size() * kernelWindow[0].size());
 
@@ -97,8 +97,9 @@ jfloatArray JNICALL Java_com_petronas_dip_CallNative_run
     dataCnt = 0;
     for(int i=0; i<result.size(); i++) {
         for(int j=0; j<result[0].size(); j++) {
-            resultData[dataCnt] = result[i][j];
-            dataCnt += 1;
+          resultData[(j * result.size()) + i] = result[i][j];
+            //resultData[dataCnt] = result[i][j];
+            //dataCnt += 1;
         }
     }     
 

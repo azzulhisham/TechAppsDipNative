@@ -18,3 +18,372 @@ g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86
 ..\jni\tempCodeRunnerFile.cpp:1:1: error: 'COLSIZE' does not name a type
     1 | COLSIZE
       | ^~~~~~~
+09:32:27 **** Incremental Build of configuration Debug for project TechApps.Dip.Native ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\DipSlopePWD.o" "..\\jni\\DipSlopePWD.cpp" 
+..\jni\DipSlopePWD.cpp: In function 'int main()':
+..\jni\DipSlopePWD.cpp:30:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+   30 |     for (int i = 0; i < c_array.size(); i++) {
+      |                     ~~^~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:31:27: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+   31 |         for (int j = 0; j < c_array[0].size(); j++) {
+      |                         ~~^~~~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:42:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+   42 |     for(int r=0; r<kernelWin.size(); r++){
+      |                  ~^~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:43:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+   43 |         for(int c=0; c<kernelWin[0].size(); c++){
+      |                      ~^~~~~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:54:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+   54 |     for (int r = 0; r < result.size(); r++)
+      |                     ~~^~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:56:27: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+   56 |         for (int c = 0; c < result[0].size(); c++)
+      |                         ~~^~~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<float> > DIP::Calculate(std::vector<std::vector<std::vector<float> > >, Index3D, Index3D, int, const std::vector<_MKL_Complex8>&)':
+..\jni\DipSlopePWD.cpp:170:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<float> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  170 |     for (int i = 0; i < dt.size(); i++)
+      |                     ~~^~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:172:27: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<float>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  172 |         for (int j = 0; j < dt[0].size(); j++)
+      |                         ~~^~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:185:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  185 |     for (int i = 0; i < resultDtDx.size(); i++)
+      |                     ~~^~~~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:187:27: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  187 |         for (int j = 0; j < resultDtDx[0].size(); j++)
+      |                         ~~^~~~~~~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:214:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  214 |     for (int i = 0; i < resultPp.size(); i++)
+      |                     ~~^~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:216:27: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  216 |         for (int j = 0; j < resultPp[0].size(); j++)
+      |                         ~~^~~~~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<_MKL_Complex8> > DIP::Convolution(const std::vector<_MKL_Complex8>&, std::vector<std::vector<_MKL_Complex8> >)':
+..\jni\DipSlopePWD.cpp:253:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  253 |     for(int r=0; r<padded.size(); r++){
+      |                  ~^~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:254:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  254 |         for(int c=0; c<padded[0].size(); c++){
+      |                      ~^~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:291:20: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  291 |     for(auto i=0; i<padded.size(); i++){
+      |                   ~^~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:297:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  297 |     for(int r=0; r<padded.size(); r++){
+      |                  ~^~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:298:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  298 |         for(int c=0; c<padded[0].size(); c++){
+      |                      ~^~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:267:18: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  267 |         MKL_LONG status;
+      |                  ^~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<_MKL_Complex8> > DIP::ExtendArray(std::vector<std::vector<_MKL_Complex8> >, int, int)':
+..\jni\DipSlopePWD.cpp:357:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  357 |             if (i >= raw.size() || j >= raw[0].size())
+      |                 ~~^~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:357:38: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  357 |             if (i >= raw.size() || j >= raw[0].size())
+      |                                    ~~^~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<_MKL_Complex8> > DIP::ExIndex(std::vector<std::vector<_MKL_Complex8> >, int, int, int, int)':
+..\jni\DipSlopePWD.cpp:371:20: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  371 |     for(auto i=0; i<m.size(); i++){
+      |                   ~^~~~~~~~~
+..\jni\DipSlopePWD.cpp:375:34: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  375 |     for (int i = 0, x=mcYFrom; i < m.size(); x++, i++)  //row
+      |                                ~~^~~~~~~~~~
+..\jni\DipSlopePWD.cpp:377:40: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  377 |         for (int j = 0, y = mcXFrom; j < m[0].size(); y++, j++)  //col
+      |                                      ~~^~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:379:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  379 |             if (x == m.size())
+      |                 ~~^~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:382:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  382 |             if (y == m[0].size())
+      |                 ~~^~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<_MKL_Complex8> > DIP::GenerateKernel(std::vector<std::vector<_MKL_Complex8> >, int, int)':
+..\jni\DipSlopePWD.cpp:400:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  400 |     for(int r=0; r<expandRaw.size(); r++){
+      |                  ~^~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:401:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  401 |         for(int c=0; c<expandRaw[0].size(); c++){
+      |                      ~^~~~~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:421:20: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  421 |     for(auto i=0; i<expandRaw.size(); i++){
+      |                   ~^~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:427:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  427 |     for(int r=0; r<expandRaw.size(); r++){
+      |                  ~^~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:428:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  428 |         for(int c=0; c<expandRaw[0].size(); c++){
+      |                      ~^~~~~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:407:14: warning: unused variable 'kn' [-Wunused-variable]
+  407 |         auto kn = paddedArray.size();
+      |              ^~
+..\jni\DipSlopePWD.cpp:412:18: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  412 |         MKL_LONG status;
+      |                  ^~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<_MKL_Complex8> > DIP::CustGaussian2D(int, int, double)':
+..\jni\DipSlopePWD.cpp:476:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<float> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  476 |     for (int i = 0; i < p.size(); i++)
+      |                     ~~^~~~~~~~~~
+..\jni\DipSlopePWD.cpp:478:27: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<float>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  478 |         for (int j = 0; j < p[0].size(); j++)
+      |                         ~~^~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<float> > DIP::CustGaussianDouble2D(int, int, double)':
+..\jni\DipSlopePWD.cpp:510:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<float> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  510 |     for (int i = 0; i < p.size(); i++)
+      |                     ~~^~~~~~~~~~
+..\jni\DipSlopePWD.cpp:512:27: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<float>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  512 |         for (int j = 0; j < p[0].size(); j++)
+      |                         ~~^~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<float> > DIP::Calculate(std::vector<std::vector<std::vector<float> > >, Index3D, Index3D, int, const std::vector<_MKL_Complex8>&)':
+..\jni\DipSlopePWD.cpp:221:54: warning: 'value._MKL_Complex8::imag' may be used uninitialized [-Wmaybe-uninitialized]
+  221 |             complex<float> tmp(value.real, value.imag);
+      |                                                      ^
+..\jni\DipSlopePWD.cpp:218:26: note: 'value' declared here
+  218 |             MKL_Complex8 value;
+      |                          ^~~~~
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\tempCodeRunnerFile.o" "..\\jni\\tempCodeRunnerFile.cpp" 
+..\jni\tempCodeRunnerFile.cpp:1:1: error: 'COLSIZE' does not name a type
+    1 | COLSIZE
+      | ^~~~~~~
+09:32:34 **** Build of configuration Debug for project test_native ****
+make all 
+Building file: ../src/test_native.cpp
+Invoking: Cygwin C++ Compiler
+g++ -I"C:\Program Files\Java\jdk1.8.0_111\include" -I"C:\Program Files\Java\jdk1.8.0_111\include\win32" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/test_native.d" -MT"src/test_native.o" -o "src/test_native.o" "../src/test_native.cpp"
+Finished building: ../src/test_native.cpp
+ 
+Building target: test_native.dll
+Invoking: Cygwin C++ Linker
+g++ -shared -o "test_native.dll"  ./src/test_native.o   
+Finished building target: test_native.dll
+ 
+09:32:40 **** Build of configuration Debug for project testing ****
+make all 
+Building file: ../src/testing.cpp
+Invoking: Cygwin C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/testing.d" -MT"src/testing.o" -o "src/testing.o" "../src/testing.cpp"
+Finished building: ../src/testing.cpp
+ 
+Building target: testing.exe
+Invoking: Cygwin C++ Linker
+g++  -o "testing.exe"  ./src/testing.o   
+Finished building target: testing.exe
+ 
+09:33:58 **** Incremental Build of configuration Debug for project TechApps.Dip.Native ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\tempCodeRunnerFile.o" "..\\jni\\tempCodeRunnerFile.cpp" 
+..\jni\tempCodeRunnerFile.cpp:1:1: error: 'COLSIZE' does not name a type
+    1 | COLSIZE
+      | ^~~~~~~
+09:33:58 **** Incremental Build of configuration Debug for project test_native ****
+make all 
+make: Nothing to be done for 'all'.
+09:33:59 **** Incremental Build of configuration Debug for project testing ****
+make all 
+make: Nothing to be done for 'all'.
+15:41:38 **** Incremental Build of configuration Debug for project TechApps.Dip.Native ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\DipSlopePWD.o" "..\\jni\\DipSlopePWD.cpp" 
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<float> > DIP::Calculate(std::vector<std::vector<std::vector<float> > >, Index3D, Index3D, int, const std::vector<_MKL_Complex8>&)':
+..\jni\DipSlopePWD.cpp:170:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<float> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  170 |     for (int i = 0; i < dt.size(); i++)
+      |                     ~~^~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:172:27: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<float>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  172 |         for (int j = 0; j < dt[0].size(); j++)
+      |                         ~~^~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:185:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  185 |     for (int i = 0; i < resultDtDx.size(); i++)
+      |                     ~~^~~~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:187:27: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  187 |         for (int j = 0; j < resultDtDx[0].size(); j++)
+      |                         ~~^~~~~~~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:214:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  214 |     for (int i = 0; i < resultPp.size(); i++)
+      |                     ~~^~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:216:27: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  216 |         for (int j = 0; j < resultPp[0].size(); j++)
+      |                         ~~^~~~~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<_MKL_Complex8> > DIP::Convolution(const std::vector<_MKL_Complex8>&, std::vector<std::vector<_MKL_Complex8> >)':
+..\jni\DipSlopePWD.cpp:253:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  253 |     for(int r=0; r<padded.size(); r++){
+      |                  ~^~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:254:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  254 |         for(int c=0; c<padded[0].size(); c++){
+      |                      ~^~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:291:20: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  291 |     for(auto i=0; i<padded.size(); i++){
+      |                   ~^~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:297:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  297 |     for(int r=0; r<padded.size(); r++){
+      |                  ~^~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:298:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  298 |         for(int c=0; c<padded[0].size(); c++){
+      |                      ~^~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:267:18: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  267 |         MKL_LONG status;
+      |                  ^~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<_MKL_Complex8> > DIP::ExtendArray(std::vector<std::vector<_MKL_Complex8> >, int, int)':
+..\jni\DipSlopePWD.cpp:357:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  357 |             if (i >= raw.size() || j >= raw[0].size())
+      |                 ~~^~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:357:38: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  357 |             if (i >= raw.size() || j >= raw[0].size())
+      |                                    ~~^~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<_MKL_Complex8> > DIP::ExIndex(std::vector<std::vector<_MKL_Complex8> >, int, int, int, int)':
+..\jni\DipSlopePWD.cpp:371:20: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  371 |     for(auto i=0; i<m.size(); i++){
+      |                   ~^~~~~~~~~
+..\jni\DipSlopePWD.cpp:375:34: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  375 |     for (int i = 0, x=mcYFrom; i < m.size(); x++, i++)  //row
+      |                                ~~^~~~~~~~~~
+..\jni\DipSlopePWD.cpp:377:40: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  377 |         for (int j = 0, y = mcXFrom; j < m[0].size(); y++, j++)  //col
+      |                                      ~~^~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:379:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  379 |             if (x == m.size())
+      |                 ~~^~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:382:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  382 |             if (y == m[0].size())
+      |                 ~~^~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<_MKL_Complex8> > DIP::GenerateKernel(std::vector<std::vector<_MKL_Complex8> >, int, int)':
+..\jni\DipSlopePWD.cpp:400:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  400 |     for(int r=0; r<expandRaw.size(); r++){
+      |                  ~^~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:401:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  401 |         for(int c=0; c<expandRaw[0].size(); c++){
+      |                      ~^~~~~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:421:20: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  421 |     for(auto i=0; i<expandRaw.size(); i++){
+      |                   ~^~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:427:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<_MKL_Complex8> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  427 |     for(int r=0; r<expandRaw.size(); r++){
+      |                  ~^~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:428:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<_MKL_Complex8>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  428 |         for(int c=0; c<expandRaw[0].size(); c++){
+      |                      ~^~~~~~~~~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp:407:14: warning: unused variable 'kn' [-Wunused-variable]
+  407 |         auto kn = paddedArray.size();
+      |              ^~
+..\jni\DipSlopePWD.cpp:412:18: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  412 |         MKL_LONG status;
+      |                  ^~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<_MKL_Complex8> > DIP::CustGaussian2D(int, int, double)':
+..\jni\DipSlopePWD.cpp:476:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<float> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  476 |     for (int i = 0; i < p.size(); i++)
+      |                     ~~^~~~~~~~~~
+..\jni\DipSlopePWD.cpp:478:27: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<float>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  478 |         for (int j = 0; j < p[0].size(); j++)
+      |                         ~~^~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<float> > DIP::CustGaussianDouble2D(int, int, double)':
+..\jni\DipSlopePWD.cpp:510:23: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::vector<float> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  510 |     for (int i = 0; i < p.size(); i++)
+      |                     ~~^~~~~~~~~~
+..\jni\DipSlopePWD.cpp:512:27: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<float>::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  512 |         for (int j = 0; j < p[0].size(); j++)
+      |                         ~~^~~~~~~~~~~~~
+..\jni\DipSlopePWD.cpp: In member function 'std::vector<std::vector<float> > DIP::Calculate(std::vector<std::vector<std::vector<float> > >, Index3D, Index3D, int, const std::vector<_MKL_Complex8>&)':
+..\jni\DipSlopePWD.cpp:221:54: warning: 'value._MKL_Complex8::imag' may be used uninitialized [-Wmaybe-uninitialized]
+  221 |             complex<float> tmp(value.real, value.imag);
+      |                                                      ^
+..\jni\DipSlopePWD.cpp:218:26: note: 'value' declared here
+  218 |             MKL_Complex8 value;
+      |                          ^~~~~
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\JavaNative.o" "..\\jni\\JavaNative.cpp" 
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\Index3D.o" "..\\jni\\Index3D.cpp" 
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\tempCodeRunnerFile.o" "..\\jni\\tempCodeRunnerFile.cpp" 
+..\jni\tempCodeRunnerFile.cpp:1:1: error: 'COLSIZE' does not name a type
+    1 | COLSIZE
+      | ^~~~~~~
+15:41:46 **** Incremental Build of configuration Debug for project test_native ****
+make all 
+make: Nothing to be done for 'all'.
+15:41:47 **** Incremental Build of configuration Debug for project testing ****
+make all 
+make: Nothing to be done for 'all'.
+15:42:59 **** Incremental Build of configuration Debug for project TechApps.Dip.Native ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\tempCodeRunnerFile.o" "..\\jni\\tempCodeRunnerFile.cpp" 
+..\jni\tempCodeRunnerFile.cpp:1:1: error: 'COLSIZE' does not name a type
+    1 | COLSIZE
+      | ^~~~~~~
+15:43:00 **** Incremental Build of configuration Debug for project test_native ****
+make all 
+make: Nothing to be done for 'all'.
+15:43:00 **** Incremental Build of configuration Debug for project testing ****
+make all 
+make: Nothing to be done for 'all'.
+15:46:59 **** Incremental Build of configuration Debug for project TechApps.Dip.Native ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\tempCodeRunnerFile.o" "..\\jni\\tempCodeRunnerFile.cpp" 
+..\jni\tempCodeRunnerFile.cpp:1:1: error: 'COLSIZE' does not name a type
+    1 | COLSIZE
+      | ^~~~~~~
+15:46:59 **** Incremental Build of configuration Debug for project test_native ****
+make all 
+make: Nothing to be done for 'all'.
+15:46:59 **** Incremental Build of configuration Debug for project testing ****
+make all 
+make: Nothing to be done for 'all'.
+15:48:35 **** Incremental Build of configuration Debug for project TechApps.Dip.Native ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\tempCodeRunnerFile.o" "..\\jni\\tempCodeRunnerFile.cpp" 
+..\jni\tempCodeRunnerFile.cpp:1:1: error: 'COLSIZE' does not name a type
+    1 | COLSIZE
+      | ^~~~~~~
+15:48:35 **** Incremental Build of configuration Debug for project test_native ****
+make all 
+make: Nothing to be done for 'all'.
+15:48:36 **** Incremental Build of configuration Debug for project testing ****
+make all 
+make: Nothing to be done for 'all'.
+07:42:15 **** Incremental Build of configuration Debug for project TechApps.Dip.Native ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\tempCodeRunnerFile.o" "..\\jni\\tempCodeRunnerFile.cpp" 
+..\jni\tempCodeRunnerFile.cpp:1:1: error: 'COLSIZE' does not name a type
+    1 | COLSIZE
+      | ^~~~~~~
+07:42:16 **** Incremental Build of configuration Debug for project test_native ****
+make all 
+make: Nothing to be done for 'all'.
+07:42:16 **** Incremental Build of configuration Debug for project testing ****
+make all 
+make: Nothing to be done for 'all'.
+07:58:28 **** Incremental Build of configuration Debug for project TechApps.Dip.Native ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\tempCodeRunnerFile.o" "..\\jni\\tempCodeRunnerFile.cpp" 
+..\jni\tempCodeRunnerFile.cpp:1:1: error: 'COLSIZE' does not name a type
+    1 | COLSIZE
+      | ^~~~~~~
+07:58:29 **** Incremental Build of configuration Debug for project test_native ****
+make all 
+make: Nothing to be done for 'all'.
+07:58:30 **** Incremental Build of configuration Debug for project testing ****
+make all 
+make: Nothing to be done for 'all'.
+07:58:51 **** Incremental Build of configuration Debug for project TechApps.Dip.Native ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\tempCodeRunnerFile.o" "..\\jni\\tempCodeRunnerFile.cpp" 
+..\jni\tempCodeRunnerFile.cpp:1:1: error: 'COLSIZE' does not name a type
+    1 | COLSIZE
+      | ^~~~~~~
+07:58:51 **** Incremental Build of configuration Debug for project test_native ****
+make all 
+make: Nothing to be done for 'all'.
+07:58:52 **** Incremental Build of configuration Debug for project testing ****
+make all 
+make: Nothing to be done for 'all'.
+08:47:00 **** Incremental Build of configuration Debug for project TechApps.Dip.Native ****
+Info: Internal Builder is used for build
+g++ "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include" "-IC:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\2021.4.0\\include" "-IC:\\Program Files\\Java\\jdk1.8.0_111\\include\\win32" -O0 -g3 -Wall -c -fmessage-length=0 -o "jni\\tempCodeRunnerFile.o" "..\\jni\\tempCodeRunnerFile.cpp" 
+..\jni\tempCodeRunnerFile.cpp:1:1: error: 'COLSIZE' does not name a type
+    1 | COLSIZE
+      | ^~~~~~~
+08:47:01 **** Incremental Build of configuration Debug for project test_native ****
+make all 
+make: Nothing to be done for 'all'.
+08:47:01 **** Incremental Build of configuration Debug for project testing ****
+make all 
+make: Nothing to be done for 'all'.

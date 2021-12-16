@@ -1,10 +1,10 @@
 package com.petronas.dip;
 
-import java.io.FileWriter;   // Import the FileWriter class
-import java.io.IOException;
+//import java.io.FileWriter;   // Import the FileWriter class
+//import java.io.IOException;
 
+//import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletionService;
@@ -151,7 +151,7 @@ public class Dip {
 //			float[] result = run(input, sampleSize);
 //			
 //			try {
-//				FileWriter out = new FileWriter("C:\\Users\\zulhisham\\Downloads\\result007.txt");
+//				FileWriter out = new FileWriter("C:\\Users\\zulhisham\\Downloads\\f3demo.txt");
 //
 //				for(int q=0; q<result.length; q++) {
 //					String str = String.valueOf(result[q]) + "\r\n";

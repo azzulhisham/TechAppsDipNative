@@ -19,7 +19,6 @@ com.jcraft.jsch,0.1.55.v20190404-1902,file:/C:/Users/zulhisham/.p2/pool/plugins/
 com.petronas.dip,1.0.0.qualifier,file:/C:/Users/zulhisham/eclipse-workspace/entd-main/src/TechApps.Dip/,4,false
 com.petronas.dsg,1.0.0.qualifier,file:/C:/Users/zulhisham/eclipse-workspace/entd-main/src/TechApps.DSG/,4,false
 com.petronas.dsg.mock,1.0.0.qualifier,file:/C:/Users/zulhisham/eclipse-workspace/entd-main/src/TechApps.DSG.Mock/,4,false
-com.petronas.entd,1.0.0.qualifier,file:/C:/Users/zulhisham/eclipse-workspace/entd-main/src/TechApps.ENTD.RCP/,4,false
 com.sun.el,2.2.0.v201303151357,file:/C:/Users/zulhisham/.p2/pool/plugins/com.sun.el_2.2.0.v201303151357.jar,4,false
 com.sun.jna,5.8.0.v20210503-0343,file:/C:/Users/zulhisham/.p2/pool/plugins/com.sun.jna_5.8.0.v20210503-0343.jar,4,false
 com.sun.jna,4.5.1.v20190425-1842,file:/C:/Users/zulhisham/.p2/pool/plugins/com.sun.jna_4.5.1.v20190425-1842.jar,4,false
@@ -40,7 +39,6 @@ javax.servlet.jsp,2.2.0.v201112011158,file:/C:/Users/zulhisham/.p2/pool/plugins/
 javax.xml,1.3.4.v201005080400,file:/C:/Users/zulhisham/.p2/pool/plugins/javax.xml_1.3.4.v201005080400.jar,4,false
 javax.xml.bind,2.2.0.v201105210648,file:/C:/Users/zulhisham/.p2/pool/plugins/javax.xml.bind_2.2.0.v201105210648.jar,4,false
 javax.xml.stream,1.0.1.v201004272200,file:/C:/Users/zulhisham/.p2/pool/plugins/javax.xml.stream_1.0.1.v201004272200.jar,4,false
-native,1.0.0.qualifier,file:/C:/Users/zulhisham/eclipse-workspace/entd-main/src/native/,4,false
 net.i2p.crypto.eddsa,0.3.0.v20181102-1323,file:/C:/Users/zulhisham/.p2/pool/plugins/net.i2p.crypto.eddsa_0.3.0.v20181102-1323.jar,4,false
 org.apache.ant,1.10.9.v20201106-1946,file:/C:/Users/zulhisham/.p2/pool/plugins/org.apache.ant_1.10.9.v20201106-1946/,4,false
 org.apache.batik.constants,1.13.0.v20200622-2037,file:/C:/Users/zulhisham/.p2/pool/plugins/org.apache.batik.constants_1.13.0.v20200622-2037.jar,4,false

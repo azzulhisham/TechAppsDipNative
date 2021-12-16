@@ -142,9 +142,15 @@ using namespace std;
 //         }
 //     }  
 
+//     //ofstream newfileout;  
+//     //newfileout.open("C:\\Users\\zulhisham\\Downloads\\cplusplus.txt",ios::out); //open a file to perform read operation using file object
+
 //     for(int i=0; i<resultData.size(); i++){
 //         cout << resultData[i] << endl;
+//         //newfileout << resultData[i] << endl;
 //     }
+
+//     //newfileout.close(); //close the file object.
 
 //     return 0;
 // }
@@ -424,7 +430,7 @@ vector<vector<MKL_Complex8>> DIP::Convolution(const vector<MKL_Complex8>& kernel
     return result;
 }
 
-vector<vector<MKL_Complex8>> DIP::PaddingArray(vector<vector<MKL_Complex8>> input, int rowSize, int colSize, int winX, int winZ,  bool circ) {
+vector<vector<MKL_Complex8>> DIP::PaddingArray(vector<vector<MKL_Complex8>> input, int colSize, int rowSize, int winX, int winZ,  bool circ) {
 
     int xMmid = (int)floor(winX / 2.0);
     int yMmid = (int)floor(winZ / 2.0);
@@ -432,7 +438,7 @@ vector<vector<MKL_Complex8>> DIP::PaddingArray(vector<vector<MKL_Complex8>> inpu
     colSize += xMmid;
     rowSize += yMmid;
 
-    vector<vector<MKL_Complex8>> extended = ExtendArray(input, rowSize, colSize);
+    vector<vector<MKL_Complex8>> extended = ExtendArray(input, colSize, rowSize);
 
     if (!circ) {
         return extended;
@@ -451,16 +457,13 @@ vector<vector<MKL_Complex8>> DIP::PaddingArray(vector<vector<MKL_Complex8>> inpu
     
 }
 
-vector<vector<MKL_Complex8>> DIP::ExtendArray(vector<vector<MKL_Complex8>> raw, int row, int col) {
+vector<vector<MKL_Complex8>> DIP::ExtendArray(vector<vector<MKL_Complex8>> raw, int col, int row) {
 
-    vector<vector<MKL_Complex8>> expanded(row);
-    for(auto i=0; i<row; i++){
-        expanded[i] = vector<MKL_Complex8>(col);
-    }
+     vector<vector<MKL_Complex8>> expanded(col, vector<MKL_Complex8>(row));
 
-    for (int i = 0; i < row; i++)
+    for (int i = 0; i < col; i++)
     {
-        for (int j = 0; j < col; j++)
+        for (int j = 0; j < row; j++)
         {
             if (i >= raw.size() || j >= raw[0].size())
                 continue;
@@ -475,14 +478,11 @@ vector<vector<MKL_Complex8>> DIP::ExtendArray(vector<vector<MKL_Complex8>> raw, 
 
 vector<vector<MKL_Complex8>> DIP::ExIndex(vector<vector<MKL_Complex8>> m, int mcXFrom, int mcXTo, int mcYFrom, int mcYTo){
 
-    vector<vector<MKL_Complex8>> newMatrix(m.size());
-    for(auto i=0; i<m.size(); i++){
-        newMatrix[i] = vector<MKL_Complex8>(m[0].size());
-    }    
+     vector<vector<MKL_Complex8>> newMatrix(m.size(), vector<MKL_Complex8>(m[0].size())); 
 
-    for (int i = 0, x=mcYFrom; i < m.size(); x++, i++)  //row
+    for (int i = 0, x=mcXFrom; i < m.size(); x++, i++)  //row
     {
-        for (int j = 0, y = mcXFrom; j < m[0].size(); y++, j++)  //col
+        for (int j = 0, y = mcYFrom; j < m[0].size(); y++, j++)  //col
         {
             if (x == m.size())
                 x = 0;
