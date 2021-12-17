@@ -17,6 +17,7 @@ using std::vector;
 class DIP
 {
 public:
+    int cutType = 0;
     int windowX = 2;
     int windowZ = 2;
     int dX = 1;
@@ -34,6 +35,7 @@ public:
 
 private:
     const float PI = 3.14159265358979323846f;
+    const int nf = 120;
 
     int GetSizeKernel(int size);
     float rotgauss(int x, int y, double theta, double sigmax, double sigmay);

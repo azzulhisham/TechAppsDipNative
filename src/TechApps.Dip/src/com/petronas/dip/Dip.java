@@ -26,6 +26,7 @@ public class Dip {
 	public int unit = 3;
 	public double rotation = 0;
 	
+	public int cuttingType = 0;
 	public int windowsX = 0;
 	public int windowsZ = 0;
 	public int dX = 0;
@@ -44,7 +45,7 @@ public class Dip {
 	
 
 	public float[] run(float[] input, int sampleSize) {
-		return CallNative.run(input, sampleSize, windowsX, windowsZ, dX, dZ, psizeCut, 
+		return CallNative.run(input, sampleSize, cuttingType, windowsX, windowsZ, dX, dZ, psizeCut, 
 			sampleSize, maxAmp, sampleRate);
 	}	
 	
@@ -143,6 +144,7 @@ public class Dip {
 		sampleRate = _seismic.getSampleRate();
 		
 		SeismicRange[] ranges = _seismic.sliceByInline();
+		
 		GetMaxAmp(ranges);
 		
 		//write raw data to file

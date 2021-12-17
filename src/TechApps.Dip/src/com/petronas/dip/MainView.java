@@ -96,6 +96,7 @@ public class MainView extends TitleAreaDialog {
 		
 		getButton(IDialogConstants.OK_ID).setEnabled(false);
 		// _log.debug("calculate");
+		_attribute.cuttingType = selectedTypeValue;
 		_attribute.windowsX = frequencies[0];
 		_attribute.windowsZ = frequencies[1];
 		_attribute.dX = frequencies[2];
@@ -231,7 +232,7 @@ public class MainView extends TitleAreaDialog {
 	}
 
 	private int[] frequencies = new int[] { 5, 3, 1, 1, 1};
-	private static final int[] min = new int[] { 3, 3, 1, 1, 1 };
+	private static final int[] min = new int[] { 2, 2, 1, 1, 1 };
 	private static final int[] max = new int[] { 25, 25, 5, 5, 10 };
 	private static final float[] divider = new float[] { 1, 1, 1, 1, 10000 };
 	private static final String[] formatter = new String[] {"%-6s", "%-6s", "%-6s", "%-6s", "%.4f"}; 
@@ -249,13 +250,11 @@ public class MainView extends TitleAreaDialog {
 		}
 	};
 	
-	
 	private static final String[] helpTexts = { "Window X", "Windows Z", "DX", "DZ", "PSize Cut"};
 	private static final String itemTypes[] = { "PWDx", "PWDy"};
-	//private static final String itemTypes[] = { "PWDx", "PWDy", String.format("%.5f", CallNative.sum(1.1, 2.2)), String.format("%.5f", CallNative.multiple(1.1, 2.2)), CallNative.comboItem(), CallNative.comboCustomItem("This custom item is passed from Java...")};
-
+    private int selectedTypeValue = 0;
+	
 	private void createParameter(final Composite parent) {	
-
 		
 		//set the grid layout with 8 columns
 		Composite container = new Composite(parent, SWT.BORDER);
@@ -286,7 +285,15 @@ public class MainView extends TitleAreaDialog {
 		comboGridData.horizontalSpan = 4;
 		valueType.setLayoutData(comboGridData);
 		valueType.setItems(itemTypes);
-
+		
+		valueType.addSelectionListener(new SelectionAdapter() {
+	        public void widgetSelected(SelectionEvent e) {
+	          selectedTypeValue = valueType.getSelectionIndex();
+	        }
+	    });	
+		
+		valueType.select(0);
+		
 		//make a empty space with 2 columns width
 		Label emptySpace = new Label(container, SWT.NONE);
 		final GridData emptyGridData = new GridData(SWT.FILL, SWT.FILL, true, false);
@@ -352,6 +359,7 @@ public class MainView extends TitleAreaDialog {
 		helpdensity.setText("     ");
 		helpdensity.addPaintListener(helpPaint);
 
+		
 		saveDensity.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {

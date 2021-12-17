@@ -702,7 +702,6 @@
         <setEntry value="com.petronas.dip@default:default"/>
         <setEntry value="com.petronas.dsg.mock@default:default"/>
         <setEntry value="com.petronas.dsg@default:default"/>
-        <setEntry value="native@default:default"/>
     </setAttribute>
     <booleanAttribute key="show_selected_only" value="false"/>
     <stringAttribute key="templateConfig" value="${target_home}\configuration\config.ini"/>

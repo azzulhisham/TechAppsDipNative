@@ -8,7 +8,7 @@ public class CallNative {
 	}	
 	
 	public static native float[] run(float[] input, int traceSize,
-			int winX, int winZ, int dx, int dz, float psizeCut,
+			int cuttype, int winX, int winZ, int dx, int dz, float psizeCut,
 			int sampleSize, float maxAmp, float sampleRate); 
 	
 	public static native double multiple(double a, double b);

@@ -1,4 +1,4 @@
-!SESSION 2021-12-16 23:29:57.814 -----------------------------------------------
+!SESSION 2021-12-17 16:09:11.231 -----------------------------------------------
 eclipse.buildId=unknown
 java.version=15.0.2
 java.vendor=Oracle Corporation
@@ -6,15 +6,15 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_MY
 Framework arguments:  -application com.petronas.dsg.mock.application
 Command-line arguments:  -application com.petronas.dsg.mock.application -data C:\Users\zulhisham\eclipse-workspace\entd-main\src/../runtime-com.petronas.dsg.mock -dev file:C:/Users/zulhisham/eclipse-workspace/entd-main/src/.metadata/.plugins/org.eclipse.pde.core/com.petronas.dsg.mock/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
 
-!ENTRY org.eclipse.jface 2 0 2021-12-16 23:30:53.729
+!ENTRY org.eclipse.jface 2 0 2021-12-17 16:09:46.123
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2021-12-16 23:30:53.729
+!SUBENTRY 1 org.eclipse.jface 2 0 2021-12-17 16:09:46.124
 !MESSAGE A conflict occurred for CTRL+SHIFT+T:
 Binding(CTRL+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
 		Open a type in a Java editor,
 		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@608c2042,
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@644f6e89,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
@@ -22,12 +22,12 @@ Binding(CTRL+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
 		,
 		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7e84a52b,
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@9ae0794,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 
-!ENTRY org.eclipse.e4.ui.workbench.swt 4 2 2021-12-16 23:30:56.204
+!ENTRY org.eclipse.e4.ui.workbench.swt 4 2 2021-12-17 16:09:47.816
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.e4.ui.workbench.swt".
 !STACK 0
 org.eclipse.swt.SWTException: Widget is disposed
@@ -103,7 +103,7 @@ org.eclipse.swt.SWTException: Widget is disposed
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1461)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1434)
 
-!ENTRY org.eclipse.e4.ui.workbench 4 0 2021-12-16 23:30:56.211
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2021-12-17 16:09:47.822
 !MESSAGE Exception occurred while rendering: org.eclipse.mylyn.tasks.ui.trim.container=org.eclipse.e4.ui.model.application.ui.menu.impl.ToolBarImpl@4e26c308 (tags: [Draggable], contributorURI: null) (widget: ImageBasedFrame {}, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ToolBarManagerRenderer@1782896, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null)
 !STACK 0
 org.eclipse.swt.SWTException: Widget is disposed
@@ -179,391 +179,52 @@ org.eclipse.swt.SWTException: Widget is disposed
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1461)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1434)
 
-!ENTRY org.eclipse.egit.ui 2 0 2021-12-16 23:30:56.732
+!ENTRY org.eclipse.egit.ui 2 0 2021-12-17 16:09:48.210
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\zulhisham'. If this is
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
 
-!ENTRY org.eclipse.core.net 4 0 2021-12-16 23:31:02.303
+!ENTRY org.eclipse.core.net 4 0 2021-12-17 16:09:53.690
 !MESSAGE WinHttp.GetProxyForUrl for pac failed with error 'The handle is invalid.
 ' #6.
+!SESSION 2021-12-17 16:25:56.480 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=15.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_MY
+Framework arguments:  -application com.petronas.dsg.mock.application
+Command-line arguments:  -application com.petronas.dsg.mock.application -data C:\Users\zulhisham\eclipse-workspace\entd-main\src/../runtime-com.petronas.dsg.mock -dev file:C:/Users/zulhisham/eclipse-workspace/entd-main/src/.metadata/.plugins/org.eclipse.pde.core/com.petronas.dsg.mock/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
 
-!ENTRY org.eclipse.osgi 4 0 2021-12-16 23:31:27.388
-!MESSAGE An error occurred while automatically activating bundle com.petronas.dip (18).
-!STACK 0
-org.osgi.framework.BundleException: Error loading bundle activator. com.petronas.dip_1.0.0.qualifier [18]
-	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:757)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1012)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:366)
-	at org.eclipse.osgi.container.Module.doStart(Module.java:605)
-	at org.eclipse.osgi.container.Module.start(Module.java:468)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:506)
-	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
-	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:572)
-	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:346)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:401)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:480)
-	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:171)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:617)
-	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:196)
-	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:920)
-	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:246)
-	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
-	at org.eclipse.ui.internal.handlers.HandlerProxy.loadHandler(HandlerProxy.java:342)
-	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:277)
-	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:97)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:319)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:253)
-	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:173)
-	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:156)
-	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:488)
-	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:487)
-	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:213)
-	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem.executeItem(HandledContributionItem.java:438)
-	at org.eclipse.e4.ui.workbench.renderers.swt.AbstractContributionItem.handleWidgetSelection(AbstractContributionItem.java:449)
-	at org.eclipse.e4.ui.workbench.renderers.swt.AbstractContributionItem.lambda$2(AbstractContributionItem.java:475)
-	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
-	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4209)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1043)
-	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4026)
-	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3626)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
-	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
-	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
-	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
-	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
-	at com.petronas.dsg.mock.Application.start(Application.java:18)
-	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:653)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1461)
-	at org.eclipse.equinox.launcher.Main.main(Main.java:1434)
-Caused by: java.lang.ClassNotFoundException: techapps.dip.Activator cannot be found by com.petronas.dip_1.0.0.qualifier
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:519)
-	at org.eclipse.osgi.internal.framework.BundleContextImpl.loadBundleActivator(BundleContextImpl.java:796)
-	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:749)
-	... 62 more
-Root exception:
-java.lang.ClassNotFoundException: techapps.dip.Activator cannot be found by com.petronas.dip_1.0.0.qualifier
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:519)
-	at org.eclipse.osgi.internal.framework.BundleContextImpl.loadBundleActivator(BundleContextImpl.java:796)
-	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:749)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1012)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:366)
-	at org.eclipse.osgi.container.Module.doStart(Module.java:605)
-	at org.eclipse.osgi.container.Module.start(Module.java:468)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:506)
-	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
-	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:572)
-	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:346)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:401)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:480)
-	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:171)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:617)
-	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:196)
-	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:920)
-	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:246)
-	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
-	at org.eclipse.ui.internal.handlers.HandlerProxy.loadHandler(HandlerProxy.java:342)
-	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:277)
-	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:97)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:319)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:253)
-	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:173)
-	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:156)
-	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:488)
-	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:487)
-	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:213)
-	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem.executeItem(HandledContributionItem.java:438)
-	at org.eclipse.e4.ui.workbench.renderers.swt.AbstractContributionItem.handleWidgetSelection(AbstractContributionItem.java:449)
-	at org.eclipse.e4.ui.workbench.renderers.swt.AbstractContributionItem.lambda$2(AbstractContributionItem.java:475)
-	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
-	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4209)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1043)
-	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4026)
-	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3626)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
-	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
-	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
-	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
-	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
-	at com.petronas.dsg.mock.Application.start(Application.java:18)
-	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:653)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1461)
-	at org.eclipse.equinox.launcher.Main.main(Main.java:1434)
+!ENTRY org.eclipse.jface 2 0 2021-12-17 16:26:06.770
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2021-12-17 16:26:06.770
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@36762234,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@18ff753c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
 
-!ENTRY org.eclipse.ui 4 0 2021-12-16 23:31:27.393
-!MESSAGE The proxied handler for 'com.petronas.dip.MenuHandler' could not be loaded
-!STACK 1
-org.eclipse.core.runtime.CoreException: Plug-in com.petronas.dip was unable to load class com.petronas.dip.MenuHandler.
-	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.throwException(RegistryStrategyOSGI.java:212)
-	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:198)
-	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:920)
-	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:246)
-	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
-	at org.eclipse.ui.internal.handlers.HandlerProxy.loadHandler(HandlerProxy.java:342)
-	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:277)
-	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:97)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:319)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:253)
-	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:173)
-	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:156)
-	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:488)
-	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:487)
-	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:213)
-	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem.executeItem(HandledContributionItem.java:438)
-	at org.eclipse.e4.ui.workbench.renderers.swt.AbstractContributionItem.handleWidgetSelection(AbstractContributionItem.java:449)
-	at org.eclipse.e4.ui.workbench.renderers.swt.AbstractContributionItem.lambda$2(AbstractContributionItem.java:475)
-	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
-	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4209)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1043)
-	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4026)
-	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3626)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
-	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
-	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
-	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
-	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
-	at com.petronas.dsg.mock.Application.start(Application.java:18)
-	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:653)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1461)
-	at org.eclipse.equinox.launcher.Main.main(Main.java:1434)
-Caused by: java.lang.ClassNotFoundException: An error occurred while automatically activating bundle com.petronas.dip (18).
-	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:126)
-	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:572)
-	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:346)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:401)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:480)
-	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:171)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:617)
-	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:196)
-	... 48 more
-Caused by: org.osgi.framework.BundleException: Error loading bundle activator. com.petronas.dip_1.0.0.qualifier [18]
-	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:757)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1012)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:366)
-	at org.eclipse.osgi.container.Module.doStart(Module.java:605)
-	at org.eclipse.osgi.container.Module.start(Module.java:468)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:506)
-	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
-	... 56 more
-Caused by: java.lang.ClassNotFoundException: techapps.dip.Activator cannot be found by com.petronas.dip_1.0.0.qualifier
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:519)
-	at org.eclipse.osgi.internal.framework.BundleContextImpl.loadBundleActivator(BundleContextImpl.java:796)
-	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:749)
-	... 62 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2021-12-16 23:31:27.394
-!MESSAGE Plug-in com.petronas.dip was unable to load class com.petronas.dip.MenuHandler.
-!STACK 0
-java.lang.ClassNotFoundException: An error occurred while automatically activating bundle com.petronas.dip (18).
-	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:126)
-	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:572)
-	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:346)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:401)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:480)
-	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:171)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:617)
-	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:196)
-	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:920)
-	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:246)
-	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
-	at org.eclipse.ui.internal.handlers.HandlerProxy.loadHandler(HandlerProxy.java:342)
-	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:277)
-	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:97)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:319)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:253)
-	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:173)
-	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:156)
-	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:488)
-	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:487)
-	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:213)
-	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem.executeItem(HandledContributionItem.java:438)
-	at org.eclipse.e4.ui.workbench.renderers.swt.AbstractContributionItem.handleWidgetSelection(AbstractContributionItem.java:449)
-	at org.eclipse.e4.ui.workbench.renderers.swt.AbstractContributionItem.lambda$2(AbstractContributionItem.java:475)
-	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
-	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4209)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1043)
-	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4026)
-	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3626)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
-	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
-	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
-	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
-	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
-	at com.petronas.dsg.mock.Application.start(Application.java:18)
-	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:653)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1461)
-	at org.eclipse.equinox.launcher.Main.main(Main.java:1434)
-Caused by: org.osgi.framework.BundleException: Error loading bundle activator. com.petronas.dip_1.0.0.qualifier [18]
-	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:757)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1012)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:366)
-	at org.eclipse.osgi.container.Module.doStart(Module.java:605)
-	at org.eclipse.osgi.container.Module.start(Module.java:468)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:506)
-	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
-	... 56 more
-Caused by: java.lang.ClassNotFoundException: techapps.dip.Activator cannot be found by com.petronas.dip_1.0.0.qualifier
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:519)
-	at org.eclipse.osgi.internal.framework.BundleContextImpl.loadBundleActivator(BundleContextImpl.java:796)
-	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:749)
-	... 62 more
+!ENTRY org.eclipse.egit.ui 2 0 2021-12-17 16:26:09.314
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\zulhisham'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
 
-!ENTRY org.eclipse.e4.ui.workbench 4 0 2021-12-16 23:31:27.398
-!MESSAGE Command 'com.petronas.dip.menu' failed
-!STACK 0
-org.eclipse.core.commands.ExecutionException: Exception occured when loading the handler
-	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:287)
-	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:97)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:319)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:253)
-	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:173)
-	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:156)
-	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:488)
-	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:487)
-	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:213)
-	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem.executeItem(HandledContributionItem.java:438)
-	at org.eclipse.e4.ui.workbench.renderers.swt.AbstractContributionItem.handleWidgetSelection(AbstractContributionItem.java:449)
-	at org.eclipse.e4.ui.workbench.renderers.swt.AbstractContributionItem.lambda$2(AbstractContributionItem.java:475)
-	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
-	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4209)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1043)
-	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4026)
-	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3626)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
-	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
-	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
-	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
-	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
-	at com.petronas.dsg.mock.Application.start(Application.java:18)
-	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:653)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1461)
-	at org.eclipse.equinox.launcher.Main.main(Main.java:1434)
-Caused by: org.eclipse.core.runtime.CoreException: Plug-in com.petronas.dip was unable to load class com.petronas.dip.MenuHandler.
-	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.throwException(RegistryStrategyOSGI.java:212)
-	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:198)
-	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:920)
-	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:246)
-	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
-	at org.eclipse.ui.internal.handlers.HandlerProxy.loadHandler(HandlerProxy.java:342)
-	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:277)
-	... 43 more
-Caused by: java.lang.ClassNotFoundException: An error occurred while automatically activating bundle com.petronas.dip (18).
-	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:126)
-	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:572)
-	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:346)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:401)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:480)
-	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:171)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:617)
-	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:196)
-	... 48 more
-Caused by: org.osgi.framework.BundleException: Error loading bundle activator. com.petronas.dip_1.0.0.qualifier [18]
-	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:757)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1012)
-	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:366)
-	at org.eclipse.osgi.container.Module.doStart(Module.java:605)
-	at org.eclipse.osgi.container.Module.start(Module.java:468)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:506)
-	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
-	... 56 more
-Caused by: java.lang.ClassNotFoundException: techapps.dip.Activator cannot be found by com.petronas.dip_1.0.0.qualifier
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:519)
-	at org.eclipse.osgi.internal.framework.BundleContextImpl.loadBundleActivator(BundleContextImpl.java:796)
-	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:749)
-	... 62 more
+!ENTRY org.eclipse.core.net 4 0 2021-12-17 16:26:14.709
+!MESSAGE WinHttp.GetProxyForUrl for pac failed with error 'The handle is invalid.
+' #6.

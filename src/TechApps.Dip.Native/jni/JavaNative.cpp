@@ -6,27 +6,24 @@ using namespace std;
 
 
 jfloatArray JNICALL Java_com_petronas_dip_CallNative_run
-  (JNIEnv *env, jclass cls, jfloatArray data, jint traceSize, jint winX, jint winZ, jint dx, jint dz, jfloat psizeCut, jint sampleSize, jfloat maxAmp, jfloat sampleRate) {
+  (JNIEnv *env, jclass cls, jfloatArray data, jint traceSize, jint cutType, jint winX, jint winZ, jint dx, jint dz, jfloat psizeCut, jint sampleSize, jfloat maxAmp, jfloat sampleRate) {
 
     DIP dip;
 
-    //dip.windowX = winX;
-    //dip.windowZ = winZ;
-    dip.windowX = 2;
-    dip.windowZ = 2;
+    dip.cutType = cutType;
+    dip.cutType == 0 ? dip.isInline = true : dip.isInline = false;
 
-    //dip.dX = dx;
-    //dip.dZ = dz;
-    dip.dX = 1;
-    dip.dZ = 1;
-
+    dip.windowX = winX;
+    dip.windowZ = winZ;
+    dip.dX = dx;
+    dip.dZ = dz;
     dip.pSize = psizeCut;
 
     int dataLength = env->GetArrayLength(data);
     int numberOfTrace = dataLength/traceSize;
 
     //initialize 3D vector/list
-    vector<vector<vector<float>>> inputData(1, vector<vector<float>>(numberOfTrace, vector<float>(traceSize)));
+    vector<vector<vector<float>>> inputData(dip.isInline ? 1 : numberOfTrace, vector<vector<float>>(dip.isInline ? numberOfTrace : 1, vector<float>(traceSize)));
 
     //convert jfloatArray to float
     vector<float> input(dataLength);
@@ -44,10 +41,10 @@ jfloatArray JNICALL Java_com_petronas_dip_CallNative_run
       float absData = abs(input[i]);
 
       if (absData < pCutter){
-        inputData[0][dataRow][dataCnt] = 0;
+        inputData[dip.isInline ? 0 : dataRow][dip.isInline ? dataRow : 0][dataCnt] = 0;
       }
       else {
-        inputData[0][dataRow][dataCnt] = input[i];
+        inputData[dip.isInline ? 0 : dataRow][dip.isInline ? dataRow : 0][dataCnt] = input[i];
       }
       
       dataCnt += 1;
@@ -62,7 +59,7 @@ jfloatArray JNICALL Java_com_petronas_dip_CallNative_run
     Index3D max((int)(inputData.size())-1, (int)(inputData[0].size())-1, (int)(inputData[0][0].size())-1);
 
     vector<vector<MKL_Complex8>> kernel = dip.CustGaussian2D(dip.windowX, dip.windowZ, 0);
-    vector<vector<MKL_Complex8>> kernelWindow = dip.GenerateKernel(kernel, (int)(inputData[0][0].size()), (int)(inputData[0].size()));
+    vector<vector<MKL_Complex8>> kernelWindow = dip.GenerateKernel(kernel, (int)(inputData[0][0].size()), dip.isInline ? (int)(inputData[0].size()) : (int)(inputData.size()));
 
     vector<MKL_Complex8>kernelWin(kernelWindow.size() * kernelWindow[0].size());
 
@@ -94,12 +91,16 @@ jfloatArray JNICALL Java_com_petronas_dip_CallNative_run
     vector<float>resultData(result.size() * result[0].size());
 
     //convert 2D array to single array
+    //convert data structure based on petrel plugin
     dataCnt = 0;
     for(int i=0; i<result.size(); i++) {
         for(int j=0; j<result[0].size(); j++) {
-          resultData[(j * result.size()) + i] = result[i][j];
-            //resultData[dataCnt] = result[i][j];
-            //dataCnt += 1;
+          if(dip.isInline) {
+            resultData[(j * result.size()) + i] = result[i][j];
+          }
+          else {
+            resultData[(j * result.size()) + i] = result[i][j];
+          }
         }
     }     
 

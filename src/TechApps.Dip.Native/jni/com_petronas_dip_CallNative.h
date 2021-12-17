@@ -13,7 +13,7 @@ extern "C" {
  * Signature: ([FIIIIIFIFF)[F
  */
 JNIEXPORT jfloatArray JNICALL Java_com_petronas_dip_CallNative_run
-  (JNIEnv *, jclass, jfloatArray, jint, jint, jint, jint, jint, jfloat, jint, jfloat, jfloat);
+  (JNIEnv *, jclass, jfloatArray, jint, jint, jint, jint, jint, jint, jfloat, jint, jfloat, jfloat);
 
 /*
  * Class:     com_petronas_dip_CallNative

@@ -95,14 +95,21 @@ using namespace std;
 //     int dataLength = (int)(input.size());
 //     int traceSize = sampleSize;
 //     int numberOfTrace = dataLength/traceSize;
-//     vector<vector<vector<float>>> inputData(1, vector<vector<float>>(numberOfTrace, vector<float>(traceSize)));
+
+//     DIP dip;
+
+//     dip.isInline = true;
+//     dip.windowX = 5;
+//     dip.windowZ = 3;
+
+//     vector<vector<vector<float>>> inputData(dip.isInline ? 1 : numberOfTrace, vector<vector<float>>(dip.isInline ? numberOfTrace : 1, vector<float>(traceSize)));
 
 //     int dataRow = 0;
 //     int dataCnt = 0;
 
 //     //convert input data to 3D array
 //     for(int i=0; i<dataLength; i++) {
-//         inputData[0][dataRow][dataCnt] = input[i];
+//         inputData[dip.isInline ? 0 : dataRow][dip.isInline ? dataRow : 0][dataCnt] = input[i];
 //         dataCnt += 1;
 
 //         if(dataCnt >= traceSize) {
@@ -111,12 +118,12 @@ using namespace std;
 //         }
 //     }
 
-//     DIP dip;
+    
 //     Index3D min(0);
 //     Index3D max((int)(inputData.size())-1, (int)(inputData[0].size())-1, (int)(inputData[0][0].size())-1);
 
 //     vector<vector<MKL_Complex8>> kernel = dip.CustGaussian2D(dip.windowX, dip.windowZ, 0);
-//     vector<vector<MKL_Complex8>> kernelWindow = dip.GenerateKernel(kernel, (int)(inputData[0].size()), (int)(inputData[0][0].size()));
+//     vector<vector<MKL_Complex8>> kernelWindow = dip.GenerateKernel(kernel, (int)(inputData[0][0].size()), dip.isInline ? (int)(inputData[0].size()) : (int)(inputData.size()));
 
 //     vector<MKL_Complex8>kernelWin(kernelWindow.size() * kernelWindow[0].size());
 
@@ -134,6 +141,7 @@ using namespace std;
 //     vector<float>resultData(result.size() * result[0].size());
 
 //     //convert 2D array to single array
+//     //do not convert data structure in order to compare C# unit test output
 //     dataCnt = 0;
 //     for(int i=0; i<result.size(); i++) {
 //         for(int j=0; j<result[0].size(); j++) {
@@ -142,15 +150,15 @@ using namespace std;
 //         }
 //     }  
 
-//     //ofstream newfileout;  
-//     //newfileout.open("C:\\Users\\zulhisham\\Downloads\\cplusplus.txt",ios::out); //open a file to perform read operation using file object
+//     ofstream newfileout;  
+//     newfileout.open("C:\\Users\\zulhisham\\Downloads\\cplusplus.txt",ios::out); //open a file to perform read operation using file object
 
 //     for(int i=0; i<resultData.size(); i++){
 //         cout << resultData[i] << endl;
-//         //newfileout << resultData[i] << endl;
+//         newfileout << resultData[i] << endl;
 //     }
 
-//     //newfileout.close(); //close the file object.
+//     newfileout.close(); //close the file object.
 
 //     return 0;
 // }
@@ -353,11 +361,11 @@ vector<vector<float>> DIP::Calculate(vector<vector<vector<float>>> data, Index3D
 
 vector<vector<MKL_Complex8>> DIP::Convolution(const vector<MKL_Complex8>& kernelWin, vector<vector<MKL_Complex8>> input) {
 
-    DIP dip;
+    //DIP dip;
     
     int colSize = (int)(input[0].size());
     int rowSize = (int)(input.size());
-    vector<vector<MKL_Complex8>> padded = dip.PaddingArray(input, rowSize, colSize, dip.GetSizeKernel(dip.windowZ), dip.GetSizeKernel(dip.windowX), false);
+    vector<vector<MKL_Complex8>> padded = PaddingArray(input, rowSize, colSize, GetSizeKernel(DIP::windowZ), GetSizeKernel(DIP::windowX), false);
 
     //convert matrix format into data array
     vector<MKL_Complex8> paddedArray(padded.size() * padded[0].size());
