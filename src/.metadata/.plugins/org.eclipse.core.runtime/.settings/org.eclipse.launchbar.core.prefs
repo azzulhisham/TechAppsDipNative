@@ -14,7 +14,7 @@ org.eclipse.launchbar.core.descriptorType.default\:TestNative\ (1)/activeLaunchM
 org.eclipse.launchbar.core.descriptorType.default\:TestNative/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:TestNativeCal/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:TestNativeSum/activeLaunchMode=run
-org.eclipse.launchbar.core.descriptorType.default\:com.petronas.dsg.mock/activeLaunchMode=debug
+org.eclipse.launchbar.core.descriptorType.default\:com.petronas.dsg.mock/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:com.petronas.dsg.mock/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:javah/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:test_native.exe/activeLaunchMode=run
