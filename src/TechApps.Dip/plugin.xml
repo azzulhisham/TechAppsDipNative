@@ -12,7 +12,7 @@
                id="com.petronas.dsg.menus.mainMenu">
             <command
                 commandId="com.petronas.dip.menu"
-                  label="DIP"
+                  label="Dip"
                   icon="icons/icon16.png"
                   style="push">      
            </command>
@@ -24,7 +24,7 @@
            <command
                  commandId="com.petronas.dip.popup"
                  icon="icons/icon16.png"
-                 label="DIP"
+                 label="Dip"
                  style="push">
             <visibleWhen checkEnabled="true"></visibleWhen>
            </command>
@@ -34,10 +34,10 @@
    <extension point="org.eclipse.ui.commands">
       <command
             id="com.petronas.dip.menu"
-            name="DIP">
+            name="Dip">
       </command> 
       <command
-            name="DIP"
+            name="Dip"
             id="com.petronas.dip.popup">
       </command>
    </extension>

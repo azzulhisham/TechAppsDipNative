@@ -5,10 +5,15 @@ class Index3D
         int J;
         int K;
 
-        //constructor
-        Index3D(int i, int j, int k); 
-        Index3D(int v);   
+        Index3D(int i, int j, int k)  {
+            I = i;
+            J = j;
+            K = k;
+        }
 
-        //method
-        void Test();    
+        Index3D(int v) {
+            I = v;
+            J = v;
+            K = v;
+        }
 };
