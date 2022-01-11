@@ -4,4 +4,5 @@ project (TechApps.Dip
     VERSION 0.1
     DESCRIPTION "Dip Guide")
 
-add_subdirectory (${PROJECT_SOURCE_DIR}/src/TechApps.Dip.Native)
+add_subdirectory (${PROJECT_SOURCE_DIR}/src/TechApps.Dip.Native/src)
+add_subdirectory (${PROJECT_SOURCE_DIR}/src/TechApps.Dip.Native/jni)

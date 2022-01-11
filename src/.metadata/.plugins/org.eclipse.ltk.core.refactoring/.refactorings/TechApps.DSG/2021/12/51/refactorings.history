@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring accessors="true" comment="Delete 2 elements from project &apos;TechApps.DSG&apos;&#x0D;&#x0A;- Original project: &apos;TechApps.DSG&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     test_native.dll&#x0D;&#x0A;     test_native.zip" description="Delete elements" element1="test_native.dll" element2="test_native.zip" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="2" stamp="1639665384298" subPackages="false" version="1.0"/>
-</session>
