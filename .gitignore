@@ -1,0 +1,8 @@
+.vs
+.vscode
+.metadata
+build
+obj
+# bin
+runtime-com.petronas.dsg.mock
+native
