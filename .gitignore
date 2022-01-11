@@ -3,6 +3,6 @@
 .metadata
 build
 obj
-# bin
+bin
 runtime-com.petronas.dsg.mock
 native
