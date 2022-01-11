@@ -140,7 +140,7 @@ vector<vector<MKL_Complex8>> Dip::Convolution(const vector<MKL_Complex8> &kernel
     int rowSize = (int)(input.size());
     vector<vector<MKL_Complex8>> padded = PaddingArray(input, rowSize, colSize, GetSizeKernel(windowZ), GetSizeKernel(windowX), false);
 
-    cout << windowX << windowZ << endl;
+    // cout << windowX << windowZ << endl;
     //convert matrix format into data array
     vector<MKL_Complex8> paddedArray(padded.size() * padded[0].size());
     vector<MKL_Complex8> conv(padded.size() * padded[0].size());
