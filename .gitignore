@@ -1,6 +1,7 @@
 .vs
 .vscode
 .metadata
+*.pdb
 build
 obj
 bin
