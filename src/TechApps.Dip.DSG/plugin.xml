@@ -4,9 +4,11 @@
 	<extension point="org.eclipse.ui.handlers">
 		<handler class="com.petronas.dip.dsg.MenuHandler" commandId="com.petronas.dip.menu">
 			<activeWhen>
-				<with variable="activePart">
-					<instanceof value="com.lgc.dsaf.ui.internal.inventory.views.DSInventoryView"></instanceof>
-				</with>
+				<not>
+					<with variable="activePartId">
+						<equals value="com.petronas.dsg.mock.view"></equals>
+					</with>
+				</not>
 			</activeWhen>
 		</handler>
 		<handler class="com.petronas.dip.dsg.MenuHandler" commandId="com.petronas.dip.popup">
